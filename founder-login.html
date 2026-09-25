@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Founder Login - संभव जनसेवा ट्रस्ट</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    width: 92%;
+    max-width: 420px;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0b5ed7;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #0b5ed7;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #084298;
+}
+
+.message {
+    margin-top: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #0b5ed7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="logo">
+        संभव जनसेवा ट्रस्ट
+    </div>
+
+    <div class="subtitle">
+        Founder Login
+    </div>
+
+    <form onsubmit="login(event)">
+
+        <label>Login ID</label>
+
+        <input
+            type="text"
+            id="loginId"
+            placeholder="अपना Login ID लिखें"
+            required
+        >
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="अपना Password लिखें"
+            required
+        >
+
+        <button type="submit">
+            Login करें
+        </button>
+
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <a class="back" href="Sambhav-Janseva-Trust.html">
+        ← वेबसाइट पर वापस जाएँ
+    </a>
+
+</div>
+
+<script>
+
+function login(event) {
+
+    event.preventDefault();
+
+    const loginId =
+        document.getElementById("loginId").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    const message =
+        document.getElementById("message");
+
+    /*
+      यह अभी केवल परीक्षण वाला Login है।
+      असली सुरक्षित Founder Login हम database/backend
+      जोड़ने के बाद बनाएँगे।
+    */
+
+    if (loginId !== "" && password !== "") {
+
+        message.style.color = "green";
+
+        message.innerText =
+            "Login जानकारी प्राप्त हो गई। अगला चरण Dashboard है।";
+
+    } else {
+
+        message.style.color = "red";
+
+        message.innerText =
+            "Login ID और Password दोनों भरें।";
+    }
+}
+
+</script>
+
+</body>
+</html>

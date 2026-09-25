@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>View Photograph - Sambhav Janseva Trust</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+h1 {
+    text-align: center;
+    color: #173b5f;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.photo-box {
+    width: 100%;
+    min-height: 350px;
+    background: #f1f3f5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.photo-box img {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+.details {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.detail-row {
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+    color: #173b5f;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.button {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.edit-button {
+    background: #0d6efd;
+}
+
+.download-button {
+    background: #198754;
+}
+
+.back-button {
+    background: #555;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="box">
+
+<h1>📷 View Photograph</h1>
+
+<div class="photo-box">
+    <img
+        src="{{ url_for('photograph_file', filename=photograph.filename) }}"
+        alt="{{ photograph.title }}"
+    >
+</div>
+
+<div class="details">
+
+    <div class="detail-row">
+        <span class="label">Photograph Title:</span>
+        {{ photograph.title }}
+    </div>
+
+    <div class="detail-row">
+        <span class="label">Program / Event:</span>
+        {{ photograph.program }}
+    </div>
+
+    <div class="detail-row">
+        <span class="label">Photograph Date:</span>
+        {{ photograph.photo_date or 'Not Available' }}
+    </div>
+
+    <div class="detail-row">
+        <span class="label">Description:</span>
+        {{ photograph.description or 'No description available.' }}
+    </div>
+
+</div>
+
+<div class="buttons">
+
+    <a
+        href="{{ url_for('edit_photograph', photograph_id=photograph.id) }}"
+        class="button edit-button"
+    >
+        ✏️ Edit
+    </a>
+
+    <a
+        href="{{ url_for('download_photograph', photograph_id=photograph.id) }}"
+        class="button download-button"
+    >
+        ⬇️ Download
+    </a>
+
+    <a
+        href="{{ url_for('admin_photographs') }}"
+        class="button back-button"
+    >
+        ← Back
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

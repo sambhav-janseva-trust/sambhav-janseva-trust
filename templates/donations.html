@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donations - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .topbar {
+            background: white;
+            padding: 17px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .topbar h1 {
+            margin: 0;
+            color: #173b5f;
+            font-size: 22px;
+        }
+
+        .back {
+            background: #1f5f8b;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #1f5f8b, #3184b5);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 22px;
+        }
+
+        .header-box h2 {
+            margin: 0 0 7px;
+            font-size: 24px;
+        }
+
+        .header-box p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 13px;
+            border: 1px solid #edf1f5;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+        }
+
+        .summary-card .label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .summary-card .value {
+            color: #173b5f;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .toolbar {
+            background: white;
+            padding: 18px;
+            border-radius: 13px;
+            margin-bottom: 20px;
+            border: 1px solid #edf1f5;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.05);
+        }
+
+        .toolbar form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar input,
+        .toolbar select {
+            padding: 11px 12px;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .toolbar input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .btn-search {
+            background: #1f5f8b;
+            color: white;
+        }
+
+        .btn-add {
+            background: #198754;
+            color: white;
+        }
+
+        .btn-summary {
+            background: #6f42c1;
+            color: white;
+        }
+
+        .table-box {
+            background: white;
+            border-radius: 13px;
+            border: 1px solid #edf1f5;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th {
+            background: #eef5fb;
+            color: #173b5f;
+            padding: 13px;
+            text-align: left;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px;
+            border-top: 1px solid #edf1f5;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .status {
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .received {
+            background: #dff6e8;
+            color: #157347;
+        }
+
+        .pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .failed {
+            background: #f8d7da;
+            color: #842029;
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-btn {
+            padding: 6px 9px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .view {
+            background: #e7f1ff;
+            color: #0d6efd;
+        }
+
+        .edit {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .empty {
+            padding: 45px 20px;
+            text-align: center;
+            color: #7b8490;
+        }
+
+        @media (max-width: 700px) {
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                gap: 12px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <h1>
+        💰 Donation Management
+    </h1>
+
+    <a href="/admin/dashboard" class="back">
+        ← Back to Dashboard
+    </a>
+
+</header>
+
+
+<div class="content">
+
+    <div class="header-box">
+
+        <h2>
+            Donations
+        </h2>
+
+        <p>
+            Manage all donations received by Sambhav Janseva Trust.
+        </p>
+
+    </div>
+
+
+    <!-- Summary -->
+    <div class="summary">
+
+        <div class="summary-card">
+
+            <div class="label">
+                Total Donations
+            </div>
+
+            <div class="value">
+                {{ donations|length }}
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Total Donation Amount
+            </div>
+
+            <div class="value">
+                ₹ {{ "%.2f"|format(total_amount) }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Search / Filter -->
+    <div class="toolbar">
+
+        <form method="GET" action="/admin/donations">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search by Donation ID, Donor, Mobile..."
+                value="{{ search }}"
+            >
+
+            <select name="payment_status">
+
+                <option value="All"
+                    {% if payment_status == "All" or not payment_status %}
+                    selected
+                    {% endif %}>
+                    All Status
+                </option>
+
+                <option value="Received"
+                    {% if payment_status == "Received" %}
+                    selected
+                    {% endif %}>
+                    Received
+                </option>
+
+                <option value="Pending"
+                    {% if payment_status == "Pending" %}
+                    selected
+                    {% endif %}>
+                    Pending
+                </option>
+
+                <option value="Failed"
+                    {% if payment_status == "Failed" %}
+                    selected
+                    {% endif %}>
+                    Failed
+                </option>
+
+            </select>
+
+            <button type="submit" class="btn btn-search">
+                🔍 Search
+            </button>
+
+            <a href="/admin/donations/summary" class="btn btn-summary">
+                📊 Donation Summary
+            </a>
+
+            <a href="/admin/donations/add" class="btn btn-add">
+                ➕ Add Donation
+            </a>
+
+        </form>
+
+    </div>
+
+
+    <!-- Donation Table -->
+    <div class="table-box">
+
+        {% if donations %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Donation ID</th>
+                    <th>Date</th>
+                    <th>Donor Name</th>
+                    <th>Mobile</th>
+                    <th>Amount</th>
+                    <th>Payment Mode</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for donation in donations %}
+
+                <tr>
+
+                    <td>
+                        <strong>{{ donation.donation_id }}</strong>
+                    </td>
+
+                    <td>
+                        {{ donation.donation_date or "-" }}
+                    </td>
+
+                    <td>
+                        {{ donation.donor_name }}
+                    </td>
+
+                    <td>
+                        {{ donation.mobile or "-" }}
+                    </td>
+
+                    <td>
+                        ₹ {{ "%.2f"|format(donation.amount or 0) }}
+                    </td>
+
+                    <td>
+                        {{ donation.payment_mode or "-" }}
+                    </td>
+
+                    <td>
+
+                        {% if donation.payment_status == "Received" %}
+
+                            <span class="status received">
+                                Received
+                            </span>
+
+                        {% elif donation.payment_status == "Pending" %}
+
+                            <span class="status pending">
+                                Pending
+                            </span>
+
+                        {% else %}
+
+                            <span class="status failed">
+                                {{ donation.payment_status or "-" }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <div class="actions">
+
+                            <a
+                                href="/admin/donations/{{ donation.id }}"
+                                class="action-btn view"
+                            >
+                                View
+                            </a>
+
+                            <a
+                                href="/admin/donations/{{ donation.id }}/edit"
+                                class="action-btn edit"
+                            >
+                                Edit
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty">
+
+            <h3>
+                अभी कोई Donation नहीं है
+            </h3>
+
+            <p>
+                पहला Donation जोड़ने के लिए नीचे दिए गए Add Donation बटन का उपयोग करें।
+            </p>
+
+            <br>
+
+            <a href="/admin/donations/add" class="btn btn-add">
+                ➕ Add First Donation
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

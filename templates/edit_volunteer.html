@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Volunteer - Sambhav Janseva Trust</title>
+</head>
+
+<body>
+
+    <h1>Edit Volunteer</h1>
+
+    <form method="POST">
+
+        <label>Name:</label><br>
+        <input type="text" name="name" value="{{ volunteer.name }}" required>
+        <br><br>
+
+        <label>Father / Husband Name:</label><br>
+        <input type="text" name="father_name" value="{{ volunteer.father_name or '' }}">
+        <br><br>
+
+        <label>Mobile:</label><br>
+        <input type="text" name="mobile" value="{{ volunteer.mobile }}" required>
+        <br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" value="{{ volunteer.email or '' }}">
+        <br><br>
+
+        <label>Gender:</label><br>
+        <input type="text" name="gender" value="{{ volunteer.gender or '' }}">
+        <br><br>
+
+        <label>Date of Birth:</label><br>
+        <input type="text" name="dob" value="{{ volunteer.dob or '' }}">
+        <br><br>
+
+        <label>Address:</label><br>
+        <textarea name="address">{{ volunteer.address or '' }}</textarea>
+        <br><br>
+
+        <label>Area:</label><br>
+        <input type="text" name="area" value="{{ volunteer.area or '' }}">
+        <br><br>
+
+        <label>Volunteer Type:</label><br>
+        <input type="text" name="volunteer_type" value="{{ volunteer.volunteer_type or 'General' }}">
+        <br><br>
+
+        <label>Joining Date:</label><br>
+        <input type="text" name="joining_date" value="{{ volunteer.joining_date or '' }}">
+        <br><br>
+
+        <label>Skills:</label><br>
+        <textarea name="skills">{{ volunteer.skills or '' }}</textarea>
+        <br><br>
+
+        <label>Status:</label><br>
+        <input type="text" name="status" value="{{ volunteer.status or 'Active' }}">
+        <br><br>
+
+        <button type="submit">Update Volunteer</button>
+
+    </form>
+
+    <br>
+
+    <a href="{{ url_for('volunteers_list') }}">
+        Back to Volunteers
+    </a>
+
+</body>
+</html>

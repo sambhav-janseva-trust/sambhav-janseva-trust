@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ content.title or "Sambhav Janseva Trust" }}
+    </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #1776a9,
+                #08618d
+            );
+
+            color: white;
+
+            padding: 18px 6%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            width: 65px;
+            height: 65px;
+
+            object-fit: contain;
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 4px;
+        }
+
+        .brand-text h1 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .brand-text p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            padding: 9px 14px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 430px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.94),
+                    rgba(255,255,255,0.94)
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+
+            object-fit: contain;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+
+            color: #176d99;
+
+            margin-bottom: 12px;
+        }
+
+        .hero h3 {
+            font-size: 22px;
+
+            color: #444;
+
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 16px;
+
+            color: #666;
+
+            line-height: 1.8;
+        }
+
+        /* BUTTONS */
+
+        .hero-buttons {
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #1776a9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0d5e89;
+        }
+
+        .btn-secondary {
+            background: #e8f2f7;
+            color: #176d99;
+        }
+
+        .btn-secondary:hover {
+            background: #d8eaf2;
+        }
+
+        /* INFORMATION */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 45px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: #176d99;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0,0,0,0.06);
+
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 35px;
+
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #333;
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* ABOUT / CONTACT / FUTURE */
+
+        .content-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 20px 20px 45px;
+        }
+
+        .content-box {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0,0,0,0.06);
+
+            margin-bottom: 25px;
+        }
+
+        .content-box h2 {
+            color: #176d99;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .content-box h3 {
+            color: #333;
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+        .content-box p {
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+
+            color: #555;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .contact-item strong {
+            color: #333;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #08618d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            header {
+                justify-content: center;
+
+                text-align: center;
+            }
+
+            .brand {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .hero h3 {
+                font-size: 19px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .content-box {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="{{ url_for(
+                'static',
+                filename='images/logo.png'
+            ) }}"
+            alt="Sambhav Janseva Trust Logo"
+        >
+
+        <div class="brand-text">
+
+            <h1>
+                {{ content.title or "Sambhav Janseva Trust" }}
+            </h1>
+
+            <p>
+                {{ content.subtitle or "सेवा • सहयोग • जनसेवा" }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/website">
+            Home
+        </a>
+
+        <a href="/notices">
+            Notice Board
+        </a>
+
+        <a href="/founder-profile">
+            Founder Profile
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <img
+            class="hero-logo"
+            src="{{ url_for(
+                'static',
+                filename='images/logo.png'
+            ) }}"
+            alt="Trust Logo"
+        >
+
+
+        <h2>
+            {{ content.title or "Sambhav Janseva Trust" }}
+        </h2>
+
+
+        <h3>
+            {{ content.subtitle or "सेवा और सहयोग" }}
+        </h3>
+
+
+        <p>
+            {{ content.description or
+            "जनसेवा और समाज के जरूरतमंद लोगों की सहायता के लिए समर्पित।" }}
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="/notices"
+                class="btn btn-primary"
+            >
+                Notice Board
+            </a>
+
+
+            <a
+                href="/founder-profile"
+                class="btn btn-secondary"
+            >
+                Founder Profile
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OUR WORK ================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <h2>
+            हमारे कार्य
+        </h2>
+
+        <p>
+            Sambhav Janseva Trust की प्रमुख सेवाएँ
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🤝
+            </div>
+
+            <h3>
+                जनसेवा
+            </h3>
+
+            <p>
+                जरूरतमंद लोगों तक सहायता और सेवा पहुँचाने का प्रयास।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ❤️
+            </div>
+
+            <h3>
+                समाज सेवा
+            </h3>
+
+            <p>
+                समाज के विकास और कल्याण के लिए विभिन्न कार्यक्रम।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌱
+            </div>
+
+            <h3>
+                सामाजिक सहयोग
+            </h3>
+
+            <p>
+                लोगों को जोड़कर समाज में सकारात्मक बदलाव लाने का प्रयास।
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT TRUST ================= -->
+
+<section class="content-section">
+
+    <div class="content-box">
+
+        <h2>
+            {{ about_content.heading or "Sambhav Janseva Trust के बारे में" }}
+        </h2>
+
+        <p>
+            {{ about_content.description or
+            "Sambhav Janseva Trust जनसेवा और समाज के जरूरतमंद लोगों की सहायता के लिए समर्पित है।" }}
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT INFORMATION ================= -->
+
+<section class="content-section">
+
+    <div class="content-box">
+
+        <h2>
+            संपर्क जानकारी
+        </h2>
+
+        <div class="contact-item">
+
+            <strong>
+                📧 Email:
+            </strong>
+
+            {{ contact_content.email or "जानकारी जल्द उपलब्ध होगी।" }}
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <strong>
+                📱 Mobile:
+            </strong>
+
+            {{ contact_content.mobile or "जानकारी जल्द उपलब्ध होगी।" }}
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <strong>
+                📍 Address:
+            </strong>
+
+            {{ contact_content.address or "जानकारी जल्द उपलब्ध होगी।" }}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FUTURE CONTENT ================= -->
+
+{% if future_content.heading or future_content.description %}
+
+<section class="content-section">
+
+    <div class="content-box">
+
+        <h2>
+            {{ future_content.heading or "Future Content" }}
+        </h2>
+
+        <p>
+            {{ future_content.description or "" }}
+        </p>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 Sambhav Janseva Trust
+    </p>
+
+    <p>
+        सेवा और सहयोग के लिए समर्पित
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

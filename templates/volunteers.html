@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteers - Sambhav Janseva Trust</title>
+</head>
+
+<body>
+
+    <h1>Volunteers</h1>
+<form method="GET" action="{{ url_for('volunteers_list') }}" style="margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap;">
+
+    <input
+        type="text"
+        name="search"
+        value="{{ search }}"
+        placeholder="Search by ID, Name or Mobile"
+        style="padding: 10px; width: 280px; border: 1px solid #ccc; border-radius: 5px;"
+    >
+
+    <button
+        type="submit"
+        style="padding: 10px 18px; border: none; border-radius: 5px; cursor: pointer;"
+    >
+        Search
+    </button>
+
+    <a
+        href="{{ url_for('volunteers_list') }}"
+        style="padding: 10px 18px; text-decoration: none; border-radius: 5px; border: 1px solid #ccc;"
+    >
+        Reset
+    </a>
+
+</form>
+    <a href="{{ url_for('add_volunteer') }}">
+        + Add Volunteer
+    </a>
+
+    <br><br>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+
+        <tr>
+            <th>ID</th>
+            <th>Volunteer ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Action</th>
+        </tr>
+
+        {% for volunteer in volunteers %}
+
+        <tr>
+            <td>{{ volunteer.id }}</td>
+
+            <td>{{ volunteer.volunteer_id }}</td>
+
+            <td>{{ volunteer.name }}</td>
+
+            <td>{{ volunteer.mobile }}</td>
+
+            <td>
+                <a href="{{ url_for('view_volunteer', volunteer_id=volunteer.id) }}">
+                    View
+                </a>
+
+                |
+
+                <a href="{{ url_for('edit_volunteer', volunteer_id=volunteer.id) }}">
+                    Edit
+                </a>
+            </td>
+        </tr>
+
+        {% else %}
+
+        <tr>
+            <td colspan="5">
+                No volunteers found.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="{{ url_for('admin_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+</body>
+</html>

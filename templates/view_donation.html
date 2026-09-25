@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Donation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        .box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .row {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        a, button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+        }
+
+        .edit {
+            background: #1976d2;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Donation Details</h1>
+
+    <div class="row">
+        <span class="label">Donation ID:</span>
+        {{ donation.donation_id }}
+    </div>
+
+    <div class="row">
+        <span class="label">Date:</span>
+        {{ donation.donation_date }}
+    </div>
+
+    <div class="row">
+        <span class="label">Donor Name:</span>
+        {{ donation.donor_name }}
+    </div>
+
+    <div class="row">
+        <span class="label">Mobile:</span>
+        {{ donation.mobile }}
+    </div>
+
+    <div class="row">
+        <span class="label">Email:</span>
+        {{ donation.email }}
+    </div>
+
+    <div class="row">
+        <span class="label">Address:</span>
+        {{ donation.address }}
+    </div>
+
+    <div class="row">
+        <span class="label">PAN:</span>
+        {{ donation.pan }}
+    </div>
+
+    <div class="row">
+        <span class="label">Amount:</span>
+        ₹{{ donation.amount }}
+    </div>
+
+    <div class="row">
+        <span class="label">Purpose:</span>
+        {{ donation.purpose }}
+    </div>
+
+    <div class="row">
+        <span class="label">Payment Mode:</span>
+        {{ donation.payment_mode }}
+    </div>
+
+    <div class="row">
+        <span class="label">Transaction Reference:</span>
+        {{ donation.transaction_reference }}
+    </div>
+
+    <div class="row">
+        <span class="label">Payment Status:</span>
+        {{ donation.payment_status }}
+    </div>
+
+    <div class="row">
+        <span class="label">Remarks:</span>
+        {{ donation.remarks }}
+    </div>
+
+    <a href="/admin/donations" class="back">Back to Donations</a>
+
+<a href="/admin/dashboard" class="back">Back to Dashboard</a>
+
+<a href="/admin/donations/{{ donation.id }}/edit" class="edit">
+    Edit Donation
+</a>
+
+</div>
+
+</body>
+</html>
+<form method="POST"
+      action="/admin/donations/{{ donation.id }}/delete"
+      onsubmit="return confirm('क्या आप इस Donation को Delete करना चाहते हैं?');"
+      style="display:inline;">
+
+    <button type="submit"
+            style="background:#d32f2f;color:white;padding:11px 18px;border:none;border-radius:6px;cursor:pointer;margin-top:20px;">
+        Delete Donation
+    </button>
+
+</form>
+<a href="/admin/donations/{{ donation.id }}/receipt"
+   style="display:inline-block;
+          background:#388e3c;
+          color:white;
+          padding:11px 18px;
+          border-radius:6px;
+          text-decoration:none;
+          margin-top:20px;">
+    Print Receipt
+</a>

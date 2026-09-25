@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Edit Notice - Sambhav Janseva Trust</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+    }
+
+    .container {
+        max-width: 750px;
+        margin: auto;
+    }
+
+    .box {
+        background: white;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .header {
+        text-align: center;
+        color: #173b5f;
+        margin-bottom: 25px;
+    }
+
+    .header h1 {
+        margin: 0 0 8px;
+    }
+
+    .header p {
+        margin: 0;
+        color: #666;
+    }
+
+    .notice-id {
+        background: #eef4f8;
+        padding: 10px;
+        border-radius: 7px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    label {
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #ccd3da;
+        border-radius: 7px;
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    textarea {
+        min-height: 180px;
+        resize: vertical;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    button,
+    .back-btn,
+    .list-btn {
+        flex: 1;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    button {
+        background: #198754;
+        color: white;
+    }
+
+    button:hover {
+        background: #157347;
+    }
+
+    .list-btn {
+        background: #0d6efd;
+        color: white;
+    }
+
+    .back-btn {
+        background: #555;
+        color: white;
+    }
+
+    @media (max-width: 600px) {
+
+        body {
+            padding: 12px;
+        }
+
+        .box {
+            padding: 20px;
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
+</head><body><div class="container"><div class="box">
+
+    <div class="header">
+        <h1>✏️ Edit Notice</h1>
+        <p>Sambhav Janseva Trust</p>
+    </div>
+
+    <div class="notice-id">
+        <strong>Notice ID:</strong> {{ notice.id }}
+    </div>
+
+    <form method="POST">
+
+        <label>Notice Title</label>
+
+        <input
+            type="text"
+            name="title"
+            value="{{ notice.title }}"
+            required
+        >
+
+        <label>Notice Date</label>
+
+        <input
+            type="date"
+            name="notice_date"
+            value="{{ notice.notice_date or '' }}"
+        >
+
+        <label>Notice Description</label>
+
+        <textarea
+            name="description"
+            required
+        >{{ notice.description }}</textarea>
+
+        <label>Status</label>
+
+        <select name="status">
+
+            <option
+                value="Published"
+                {% if notice.status == "Published" %}selected{% endif %}
+            >
+                Published
+            </option>
+
+            <option
+                value="Draft"
+                {% if notice.status == "Draft" %}selected{% endif %}
+            >
+                Draft
+            </option>
+
+        </select>
+
+        <div class="buttons">
+
+            <button type="submit">
+                💾 Save Changes
+            </button>
+
+            <a
+                href="/admin/notices"
+                class="list-btn"
+            >
+                📋 Back to Notices
+            </a>
+
+            <a
+                href="/admin/dashboard"
+                class="back-btn"
+            >
+                🏠 Back to Dashboard
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+</div></body>
+</html>

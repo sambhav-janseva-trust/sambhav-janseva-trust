@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Notice Board - Sambhav Janseva Trust</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .header {
+        background: #173b5f;
+        color: white;
+        padding: 30px 20px;
+        border-radius: 14px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .header .icon {
+        font-size: 42px;
+        margin-bottom: 8px;
+    }
+
+    .header h1 {
+        margin: 0 0 8px;
+        font-size: 30px;
+    }
+
+    .header p {
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    .notice-card {
+        background: white;
+        border-radius: 12px;
+        padding: 22px;
+        margin-bottom: 16px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+        border-left: 5px solid #198754;
+    }
+
+    .notice-title {
+        font-size: 21px;
+        font-weight: bold;
+        color: #173b5f;
+        margin-bottom: 10px;
+    }
+
+    .notice-date {
+        color: #666;
+        font-size: 13px;
+        margin-bottom: 14px;
+    }
+
+    .notice-description {
+        color: #444;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        margin-bottom: 15px;
+    }
+
+    .read-btn {
+        display: inline-block;
+        padding: 9px 15px;
+        background: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .empty {
+        background: white;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    }
+
+    .empty-icon {
+        font-size: 45px;
+        margin-bottom: 10px;
+    }
+
+    .empty h2 {
+        color: #173b5f;
+        margin-bottom: 8px;
+    }
+
+    .empty p {
+        color: #666;
+    }
+
+    .bottom-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .bottom-buttons a {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 7px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
+
+    .home-btn {
+        background: #555;
+    }
+
+    .refresh-btn {
+        background: #198754;
+    }
+
+    @media (max-width: 600px) {
+
+        body {
+            padding: 12px;
+        }
+
+        .header {
+            padding: 24px 15px;
+        }
+
+        .header h1 {
+            font-size: 25px;
+        }
+
+        .notice-card {
+            padding: 18px;
+        }
+
+        .bottom-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
+</head><body><div class="container"><div class="header">
+
+    <div class="icon">
+        📢
+    </div>
+
+    <h1>
+        Notice Board
+    </h1>
+
+    <p>
+        Sambhav Janseva Trust
+    </p>
+
+</div>
+
+{% if notices %}
+
+    {% for notice in notices %}
+
+        <div class="notice-card">
+
+            <div class="notice-title">
+                {{ notice.title }}
+            </div>
+
+            {% if notice.notice_date %}
+
+                <div class="notice-date">
+                    📅 {{ notice.notice_date }}
+                </div>
+
+            {% endif %}
+
+            <div class="notice-description">
+                {{ notice.description }}
+            </div>
+
+            <a
+                href="/notices/{{ notice.id }}"
+                class="read-btn"
+            >
+                👁️ Read Full Notice
+            </a>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="empty">
+
+        <div class="empty-icon">
+            📢
+        </div>
+
+        <h2>
+            No Notices Available
+        </h2>
+
+        <p>
+            There are currently no published notices.
+            Please check again later.
+        </p>
+
+    </div>
+
+{% endif %}
+
+<div class="bottom-buttons">
+
+    <a
+        href="/"
+        class="home-btn"
+    >
+        🏠 Back to Home
+    </a>
+
+    <a
+        href="/notices"
+        class="refresh-btn"
+    >
+        🔄 Refresh Notice Board
+    </a>
+
+</div>
+
+</div></body>
+</html>

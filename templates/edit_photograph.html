@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Photograph - Sambhav Janseva Trust</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+h1 {
+    text-align: center;
+    color: #173b5f;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.current-photo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.current-photo img {
+    max-width: 100%;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccd3da;
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+button,
+.back {
+    flex: 1;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+button {
+    background: #0d6efd;
+    color: white;
+}
+
+button:hover {
+    background: #0b5ed7;
+}
+
+.back {
+    background: #555;
+    color: white;
+}
+
+.back:hover {
+    background: #444;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="box">
+
+<h1>✏️ Edit Photograph</h1>
+
+<div class="current-photo">
+    <img
+        src="{{ url_for('photograph_file', filename=photograph.filename) }}"
+        alt="{{ photograph.title }}"
+    >
+</div>
+
+<form method="POST">
+
+    <label>Photograph Title</label>
+    <input
+        type="text"
+        name="title"
+        value="{{ photograph.title }}"
+        required
+    >
+
+    <label>Program / Event</label>
+    <input
+        type="text"
+        name="program"
+        value="{{ photograph.program }}"
+        required
+    >
+
+    <label>Photograph Date</label>
+    <input
+        type="date"
+        name="photo_date"
+        value="{{ photograph.photo_date or '' }}"
+    >
+
+    <label>Description</label>
+    <textarea name="description">{{ photograph.description or '' }}</textarea>
+
+    <div class="buttons">
+
+        <button type="submit">
+            💾 Save Changes
+        </button>
+
+        <a
+            href="{{ url_for('admin_photographs') }}"
+            class="back"
+        >
+            ← Back
+        </a>
+
+    </div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

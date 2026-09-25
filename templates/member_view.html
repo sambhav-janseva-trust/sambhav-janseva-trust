@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Member Details - Sambhav Janseva Trust
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f5f8;
+            color: #222;
+        }
+
+        .page-container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #17365d;
+        }
+
+        .member-details-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .member-details-box h2 {
+            margin-top: 0;
+            color: #17365d;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 25px;
+        }
+
+        .detail-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .documents-box {
+            margin-top: 25px;
+        }
+
+        .documents-box h3 {
+            color: #17365d;
+            margin-bottom: 15px;
+        }
+
+        .document-item {
+            margin-bottom: 18px;
+        }
+
+        .document-item img {
+            max-width: 180px;
+            max-height: 180px;
+            display: block;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 4px;
+            background: white;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-blue {
+            background: #17365d;
+            color: white;
+        }
+
+        .btn-green {
+            background: #198754;
+            color: white;
+        }
+
+        .btn-red {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-print {
+            background: #0d6efd;
+            color: white;
+        }
+
+
+        /* =========================================
+           MEMBER ID CARD
+           ========================================= */
+
+        .id-card-section {
+            margin-top: 35px;
+        }
+
+        .id-card-heading {
+            text-align: center;
+            color: #17365d;
+            margin-bottom: 15px;
+        }
+
+        .member-id-card {
+            width: 860px;
+            max-width: 100%;
+            min-height: 540px;
+            margin: auto;
+
+            background: white;
+
+            border: 2px solid #17365d;
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 20px rgba(0,0,0,0.15);
+
+            position: relative;
+        }
+
+
+        /* TOP HEADER */
+
+        .id-card-header {
+            background: #17365d;
+            color: white;
+            padding: 15px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            min-height: 95px;
+        }
+
+        .trust-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .trust-logo {
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        .trust-header-text h1 {
+            margin: 0;
+            font-size: 25px;
+            line-height: 1.2;
+        }
+
+        .trust-header-text p {
+            margin: 5px 0 0 0;
+            font-size: 13px;
+        }
+
+        .trust-contact {
+            text-align: right;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .trust-contact strong {
+            font-size: 13px;
+        }
+
+
+        /* CARD TITLE */
+
+        .id-card-title {
+            text-align: center;
+            padding: 10px 15px 5px;
+        }
+
+        .id-card-title h2 {
+            margin: 0;
+            color: #17365d;
+            font-size: 21px;
+        }
+
+        .id-card-title p {
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+
+        /* MAIN AREA */
+
+        .id-card-main {
+            display: flex;
+            gap: 20px;
+            padding: 15px 22px;
+        }
+
+
+        /* PHOTO AREA */
+
+        .member-photo-area {
+            width: 175px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 145px;
+            height: 170px;
+            object-fit: cover;
+
+            border: 2px solid #17365d;
+            border-radius: 6px;
+
+            display: block;
+            margin: 0 auto;
+        }
+
+        .no-photo {
+            width: 145px;
+            height: 170px;
+            margin: auto;
+
+            border: 2px solid #aaa;
+            border-radius: 6px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* MEMBER SIGNATURE */
+
+        .member-signature-title {
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .member-signature {
+            width: 145px;
+            height: 48px;
+            object-fit: contain;
+
+            display: block;
+            margin: 3px auto 0;
+
+            border-bottom: 1px solid #333;
+        }
+
+        .no-signature {
+            width: 145px;
+            height: 48px;
+            margin: 3px auto 0;
+
+            border-bottom: 1px solid #333;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+            color: #999;
+        }
+
+
+        /* DETAILS */
+
+        .member-card-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .member-detail-row {
+            display: grid;
+            grid-template-columns: 135px 15px 1fr;
+
+            padding: 4px 0;
+
+            font-size: 12px;
+
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .member-detail-label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .member-detail-colon {
+            text-align: center;
+        }
+
+        .member-detail-value {
+            color: #111;
+            word-break: break-word;
+        }
+
+        .address-value {
+            line-height: 1.4;
+        }
+
+        .status-active {
+            font-weight: bold;
+            color: #198754;
+        }
+
+
+        /* BOTTOM AREA */
+
+        .id-card-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 25px 12px;
+
+            border-top: 1px solid #ddd;
+        }
+
+        .authority-signature {
+            width: 190px;
+            text-align: center;
+        }
+
+        .authority-line {
+            height: 38px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+        }
+
+        .authority-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .authority-note {
+            font-size: 9px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+
+        /* FOOTER */
+
+        .id-card-footer {
+            background: #17365d;
+            color: white;
+            text-align: center;
+
+            padding: 8px 10px;
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .id-card-footer .trust-name {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .id-card-footer .trust-address {
+            font-size: 10px;
+        }
+
+        .id-card-footer .trust-email {
+            font-size: 10px;
+        }
+
+
+        /* BUTTONS BELOW CARD */
+
+        .id-card-actions {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .id-card-actions button {
+            border: none;
+            border-radius: 6px;
+            padding: 10px 18px;
+            margin: 4px;
+
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+        }
+
+        .print-id-card {
+            background: #0d6efd;
+        }
+
+        .download-id-card {
+            background: #198754;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .id-card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .trust-header-left {
+                justify-content: center;
+            }
+
+            .trust-contact {
+                text-align: center;
+            }
+
+            .id-card-main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .member-card-details {
+                width: 100%;
+            }
+
+            .member-detail-row {
+                grid-template-columns: 115px 12px 1fr;
+                font-size: 11px;
+            }
+
+            .id-card-bottom {
+                justify-content: center;
+            }
+        }
+
+
+        /* PRINT */
+
+        @media print {
+
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .page-title,
+            .member-details-box,
+            .documents-box,
+            .button-row,
+            .id-card-heading,
+            .id-card-actions {
+                display: none !important;
+            }
+
+            .page-container {
+                max-width: none;
+                margin: 0;
+            }
+
+            .id-card-section {
+                margin: 0;
+            }
+
+            .member-id-card {
+                width: 860px;
+                max-width: 860px;
+
+                box-shadow: none;
+
+                margin: 0 auto;
+
+                page-break-inside: avoid;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <h1 class="page-title">
+        Sambhav Janseva Trust - Member Details
+    </h1>
+
+    <div class="member-details-box">
+
+        <h2>Member Information</h2>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Member ID:</span>
+                {{ member.member_id }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Name:</span>
+                {{ member.name }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Father / Husband Name:</span>
+                {{ member.father_name }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Mobile:</span>
+                {{ member.mobile }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Email:</span>
+                {{ member.email or "-" }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Gender:</span>
+                {{ member.gender or "-" }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Date of Birth:</span>
+                {{ member.dob or "-" }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Membership Type:</span>
+                {{ member.membership_type or "-" }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Joining Date:</span>
+                {{ member.membership_date or "-" }}
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Status:</span>
+                {{ member.status or "-" }}
+            </div>
+
+            <div class="detail-item" style="grid-column: 1 / -1;">
+                <span class="detail-label">Address:</span>
+                {{ member.address or "-" }}
+            </div>
+
+        </div>
+
+        <div class="documents-box">
+
+            <h3>Uploaded Documents</h3>
+
+            {% if member.photo %}
+            <div class="document-item">
+
+                <strong>Member Photo</strong>
+
+                <img
+                    src="{{ url_for('uploaded_member_file', filename=member.photo) }}"
+                    alt="Member Photo"
+                >
+
+                <br>
+
+                <a
+                    href="{{ url_for('uploaded_member_file', filename=member.photo) }}"
+                    target="_blank"
+                >
+                    Open Photo
+                </a>
+
+            </div>
+            {% endif %}
+
+
+            {% if member.signature %}
+            <div class="document-item">
+
+                <strong>Member Signature</strong>
+
+                <img
+                    src="{{ url_for('uploaded_member_file', filename=member.signature) }}"
+                    alt="Member Signature"
+                >
+
+                <br>
+
+                <a
+                    href="{{ url_for('uploaded_member_file', filename=member.signature) }}"
+                    target="_blank"
+                >
+                    Open Signature
+                </a>
+
+            </div>
+            {% endif %}
+
+
+            {% if member.id_proof %}
+            <div class="document-item">
+
+                <strong>ID Proof:</strong>
+
+                <a
+                    href="{{ url_for('uploaded_member_file', filename=member.id_proof) }}"
+                    target="_blank"
+                >
+                    Open ID Proof
+                </a>
+
+            </div>
+            {% endif %}
+
+
+            {% if member.address_proof %}
+            <div class="document-item">
+
+                <strong>Address Proof:</strong>
+
+                <a
+                    href="{{ url_for('uploaded_member_file', filename=member.address_proof) }}"
+                    target="_blank"
+                >
+                    Open Address Proof
+                </a>
+
+            </div>
+            {% endif %}
+
+        </div>
+
+
+        <div class="button-row">
+
+            <a
+                href="{{ url_for('members_list') }}"
+                class="btn btn-blue"
+            >
+                Members List
+            </a>
+
+            <a
+                href="{{ url_for('edit_member', member_id=member.id) }}"
+                class="btn btn-green"
+            >
+                Edit Member
+            </a>
+
+            <a
+                href="{{ url_for('delete_member', member_id=member.id) }}"
+                class="btn btn-red"
+                onclick="return confirm('Are you sure you want to delete this member?');"
+            >
+                Delete Member
+            </a>
+
+            <a
+                href="{{ url_for('admin_dashboard') }}"
+                class="btn btn-blue"
+            >
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+     MEMBER ID CARD
+     ================================================= -->
+
+<style>
+
+    /* =========================================
+       PORTRAIT MEMBER ID CARD
+       SIZE: 2.125 x 3.37 INCH
+       ========================================= */
+
+    .id-card-section {
+        margin-top: 35px;
+    }
+
+    .id-card-heading {
+        text-align: center;
+        color: #17365d;
+        margin-bottom: 15px;
+    }
+
+
+    .member-id-card {
+        width: 2.125in;
+        height: 3.37in;
+
+        min-width: 2.125in;
+        max-width: 2.125in;
+
+        min-height: 3.37in;
+        max-height: 3.37in;
+
+        margin: 0 auto;
+
+        background: white;
+
+        border: 1px solid #17365d;
+        border-radius: 7px;
+
+        overflow: hidden;
+
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    /* =========================================
+       TOP HEADER
+       ========================================= */
+
+    .id-card-header {
+        background: #17365d;
+        color: white;
+
+        width: 100%;
+
+        padding: 7px 7px 6px;
+
+        display: flex;
+        align-items: center;
+
+        justify-content: space-between;
+
+        flex-shrink: 0;
+    }
+
+
+    .trust-header-left {
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        min-width: 0;
+    }
+
+
+    .trust-logo {
+        width: 34px;
+        height: 34px;
+
+        object-fit: contain;
+
+        background: white;
+
+        border-radius: 50%;
+
+        padding: 1px;
+
+        flex-shrink: 0;
+    }
+
+
+    .trust-header-text {
+        min-width: 0;
+    }
+
+
+    .trust-header-text h1 {
+        margin: 0;
+
+        font-size: 10px;
+        line-height: 1.1;
+
+        white-space: nowrap;
+    }
+
+
+    .trust-header-text p {
+        margin: 2px 0 0;
+
+        font-size: 6.5px;
+
+        line-height: 1.1;
+
+        white-space: nowrap;
+    }
+
+
+    .trust-contact {
+        text-align: right;
+
+        font-size: 5.2px;
+
+        line-height: 1.35;
+
+        max-width: 82px;
+
+        word-break: break-word;
+
+        flex-shrink: 0;
+    }
+
+
+    .trust-contact strong {
+        font-size: 5.5px;
+    }
+
+
+    /* =========================================
+       CARD TITLE
+       ========================================= */
+
+    .id-card-title {
+        text-align: center;
+
+        padding: 5px 5px 3px;
+
+        flex-shrink: 0;
+    }
+
+
+    .id-card-title h2 {
+        margin: 0;
+
+        color: #17365d;
+
+        font-size: 9.5px;
+
+        line-height: 1.15;
+    }
+
+
+    .id-card-title p {
+        margin: 2px 0 0;
+
+        font-size: 5.5px;
+
+        color: #666;
+    }
+
+
+    /* =========================================
+       MAIN MEMBER AREA
+       ========================================= */
+
+    .id-card-main {
+        display: flex;
+
+        gap: 6px;
+
+        padding: 4px 7px 3px;
+
+        flex: 1;
+
+        min-height: 0;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================================
+       PHOTO + MEMBER SIGNATURE
+       ========================================= */
+
+    .member-photo-area {
+        width: 64px;
+
+        flex-shrink: 0;
+
+        text-align: center;
+    }
+
+
+    .member-photo {
+        width: 58px;
+        height: 70px;
+
+        object-fit: cover;
+
+        border: 1px solid #17365d;
+
+        border-radius: 3px;
+
+        display: block;
+
+        margin: 0 auto;
+    }
+
+
+    .no-photo {
+        width: 58px;
+        height: 70px;
+
+        margin: 0 auto;
+
+        border: 1px solid #999;
+
+        border-radius: 3px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 6px;
+
+        color: #777;
+    }
+
+
+    .member-signature-title {
+        margin-top: 3px;
+
+        font-size: 5.5px;
+
+        font-weight: bold;
+
+        color: #555;
+
+        line-height: 1.1;
+    }
+
+
+    .member-signature {
+        width: 58px;
+        height: 25px;
+
+        object-fit: contain;
+
+        display: block;
+
+        margin: 2px auto 0;
+
+        border-bottom: 1px solid #333;
+    }
+
+
+    .no-signature {
+        width: 58px;
+        height: 25px;
+
+        margin: 2px auto 0;
+
+        border-bottom: 1px solid #333;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 4.5px;
+
+        color: #999;
+    }
+
+
+    /* =========================================
+       MEMBER DETAILS
+       ========================================= */
+
+    .member-card-details {
+        flex: 1;
+
+        min-width: 0;
+
+        overflow: hidden;
+    }
+
+
+    .member-detail-row {
+        display: grid;
+
+        grid-template-columns: 57px 5px minmax(0, 1fr);
+
+        gap: 0;
+
+        padding: 1.5px 0;
+
+        font-size: 6px;
+
+        line-height: 1.15;
+
+        border-bottom: 1px dotted #ddd;
+    }
+
+
+    .member-detail-label {
+        font-weight: bold;
+
+        color: #444;
+
+        white-space: nowrap;
+    }
+
+
+    .member-detail-colon {
+        text-align: center;
+    }
+
+
+    .member-detail-value {
+        color: #111;
+
+        min-width: 0;
+
+        word-break: normal;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .address-value {
+        line-height: 1.2;
+
+        max-height: 31px;
+
+        overflow: hidden;
+    }
+
+
+    .status-active {
+        font-weight: bold;
+
+        color: #198754;
+    }
+
+
+    /* =========================================
+       AUTHORITY SIGNATURE & SEAL
+       ========================================= */
+
+    .id-card-bottom {
+        width: 100%;
+
+        display: flex;
+
+        align-items: flex-end;
+
+        justify-content: center;
+
+        padding: 3px 7px 3px;
+
+        border-top: 1px solid #ddd;
+
+        flex-shrink: 0;
+    }
+
+
+    .authority-signature {
+        width: 95px;
+
+        text-align: center;
+    }
+
+
+    .authority-line {
+        height: 17px;
+
+        border-bottom: 1px solid #333;
+
+        margin-bottom: 2px;
+    }
+
+
+    .authority-label {
+        font-size: 5.5px;
+
+        font-weight: bold;
+
+        color: #444;
+
+        line-height: 1.1;
+    }
+
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+
+    .id-card-footer {
+        background: #17365d;
+
+        color: white;
+
+        width: 100%;
+
+        text-align: center;
+
+        padding: 4px 4px 5px;
+
+        font-size: 5px;
+
+        line-height: 1.25;
+
+        flex-shrink: 0;
+    }
+
+
+    .id-card-footer .trust-name {
+        font-weight: bold;
+
+        font-size: 6.5px;
+    }
+
+
+    .id-card-footer .trust-address {
+        font-size: 5px;
+
+        margin-top: 1px;
+    }
+
+
+    .id-card-footer .trust-email {
+        font-size: 4.6px;
+
+        margin-top: 1px;
+
+        word-break: break-all;
+    }
+
+
+    /* =========================================
+       BUTTONS
+       ========================================= */
+
+    .id-card-actions {
+        text-align: center;
+
+        margin-top: 18px;
+    }
+
+
+    .id-card-actions button {
+        border: none;
+
+        border-radius: 6px;
+
+        padding: 10px 18px;
+
+        margin: 4px;
+
+        cursor: pointer;
+
+        color: white;
+
+        font-size: 14px;
+    }
+
+
+    .print-id-card {
+        background: #0d6efd;
+    }
+
+
+    .download-id-card {
+        background: #198754;
+    }
+
+
+    /* =========================================
+       PRINT
+       ========================================= */
+
+    @media print {
+
+        @page {
+            size: 2.125in 3.37in;
+
+            margin: 0;
+        }
+
+
+        html,
+        body {
+            width: 2.125in;
+
+            height: 3.37in;
+
+            margin: 0;
+
+            padding: 0;
+
+            background: white;
+        }
+
+
+        .page-title,
+        .member-details-box,
+        .documents-box,
+        .button-row,
+        .id-card-heading,
+        .id-card-actions {
+            display: none !important;
+        }
+
+
+        .page-container {
+            width: 2.125in;
+
+            height: 3.37in;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        .id-card-section {
+            width: 2.125in;
+
+            height: 3.37in;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        .member-id-card {
+            width: 2.125in;
+
+            height: 3.37in;
+
+            min-width: 2.125in;
+            max-width: 2.125in;
+
+            min-height: 3.37in;
+            max-height: 3.37in;
+
+            margin: 0;
+
+            box-shadow: none;
+
+            border-radius: 0;
+        }
+
+    }
+
+</style>
+
+
+<div class="id-card-section">
+
+    <h2 class="id-card-heading">
+        Member ID Card
+    </h2>
+
+
+    <div class="member-id-card">
+
+
+        <!-- =========================================
+             HEADER
+             ========================================= -->
+
+        <div class="id-card-header">
+
+            <div class="trust-header-left">
+
+                <img
+                    src="{{ url_for('static', filename='images/logo.png') }}"
+                    alt="Sambhav Janseva Trust Logo"
+                    class="trust-logo"
+                >
+
+
+                <div class="trust-header-text">
+
+                    <h1>
+                        Sambhav Janseva Trust
+                    </h1>
+
+                    <p>
+                        Member Identity Card
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-contact">
+
+                <strong>Contact</strong><br>
+
+                +91 9006373726<br>
+
+                sambhavjansevatrust@gmail.com
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             TITLE
+             ========================================= -->
+
+        <div class="id-card-title">
+
+            <h2>
+                Sambhav Janseva Trust - Member ID Card
+            </h2>
+
+            <p>
+                Member Identification
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             MEMBER MAIN INFORMATION
+             ========================================= -->
+
+        <div class="id-card-main">
+
+
+            <!-- PHOTO + SIGNATURE -->
+
+            <div class="member-photo-area">
+
+                {% if member.photo %}
+
+                <img
+                    src="{{ url_for('uploaded_member_file', filename=member.photo) }}"
+                    alt="Member Photo"
+                    class="member-photo"
+                >
+
+                {% else %}
+
+                <div class="no-photo">
+                    No Photo
+                </div>
+
+                {% endif %}
+
+
+                <div class="member-signature-title">
+                    Member Signature
+                </div>
+
+
+                {% if member.signature %}
+
+                <img
+                    src="{{ url_for('uploaded_member_file', filename=member.signature) }}"
+                    alt="Member Signature"
+                    class="member-signature"
+                >
+
+                {% else %}
+
+                <div class="no-signature">
+                    Signature not available
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- MEMBER DETAILS -->
+
+            <div class="member-card-details">
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Member ID
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.member_id }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Name
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.name }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Father / Husband
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.father_name or "-" }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Gender
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.gender or "-" }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Date of Birth
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.dob or "-" }}
+                    </div>
+
+                </div>
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Mobile No.
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        +91 {{ member.mobile }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Membership
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.membership_type or "-" }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Joining Date
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value">
+                        {{ member.membership_date or "-" }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Status
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value status-active">
+                        {{ member.status or "-" }}
+                    </div>
+
+                </div>
+
+
+                <div class="member-detail-row">
+
+                    <div class="member-detail-label">
+                        Address
+                    </div>
+
+                    <div class="member-detail-colon">
+                        :
+                    </div>
+
+                    <div class="member-detail-value address-value">
+                        {{ member.address or "-" }}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             AUTHORITY SIGNATURE & SEAL
+             ========================================= -->
+
+        <div class="id-card-bottom">
+
+            <div class="authority-signature">
+
+                <div class="authority-line"></div>
+
+                <div class="authority-label">
+                    Authority Signature &amp; Seal
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             TRUST FOOTER
+             ========================================= -->
+
+        <div class="id-card-footer">
+
+            <div class="trust-name">
+                Sambhav Janseva Trust
+            </div>
+
+            <div class="trust-address">
+                Bisambharpur
+            </div>
+
+            <div class="trust-email">
+                +91 9006373726 |
+                official.sambhavjansewatrust@gmail.com
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================================
+         ACTION BUTTONS
+         ========================================= -->
+
+    <div class="id-card-actions">
+
+        <button
+            type="button"
+            class="print-id-card"
+            onclick="printIdCard()"
+        >
+            Print ID Card
+        </button>
+
+
+        <button
+            type="button"
+            class="download-id-card"
+            onclick="downloadIdCard()"
+        >
+            Download ID Card
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function printIdCard() {
+
+        window.print();
+
+    }
+
+
+    function downloadIdCard() {
+
+        const card =
+            document.querySelector(".member-id-card");
+
+
+        if (!card) {
+
+            alert("Member ID Card not found.");
+
+            return;
+
+        }
+
+
+        const cardHtml =
+            card.outerHTML;
+
+
+        const downloadWindow =
+            window.open("", "_blank");
+
+
+        downloadWindow.document.write(`
+
+            <!DOCTYPE html>
+
+            <html>
+
+            <head>
+
+                <title>
+                    Sambhav Janseva Trust - Member ID Card
+                </title>
+
+
+                <style>
+
+                    @page {
+                        size: 2.125in 3.37in;
+                        margin: 0;
+                    }
+
+
+                    html,
+                    body {
+
+                        width: 2.125in;
+
+                        height: 3.37in;
+
+                        margin: 0;
+
+                        padding: 0;
+
+                        background: white;
+
+                        font-family:
+                            Arial,
+                            Helvetica,
+                            sans-serif;
+                    }
+
+
+                    .member-id-card {
+
+                        width: 2.125in;
+
+                        height: 3.37in;
+
+                        min-width: 2.125in;
+                        max-width: 2.125in;
+
+                        min-height: 3.37in;
+                        max-height: 3.37in;
+
+                        margin: 0;
+
+                        padding: 0;
+
+                        background: white;
+
+                        border: 1px solid #17365d;
+
+                        border-radius: 7px;
+
+                        overflow: hidden;
+
+                        display: flex;
+
+                        flex-direction: column;
+                    }
+
+
+                    .id-card-header {
+
+                        background: #17365d;
+
+                        color: white;
+
+                        padding: 7px;
+
+                        display: flex;
+
+                        align-items: center;
+
+                        justify-content:
+                            space-between;
+
+                        flex-shrink: 0;
+                    }
+
+
+                    .trust-header-left {
+
+                        display: flex;
+
+                        align-items: center;
+
+                        gap: 5px;
+                    }
+
+
+                    .trust-logo {
+
+                        width: 34px;
+
+                        height: 34px;
+
+                        object-fit: contain;
+
+                        background: white;
+
+                        border-radius: 50%;
+
+                        padding: 1px;
+                    }
+
+
+                    .trust-header-text h1 {
+
+                        margin: 0;
+
+                        font-size: 10px;
+
+                        white-space: nowrap;
+                    }
+
+
+                    .trust-header-text p {
+
+                        margin: 2px 0 0;
+
+                        font-size: 6.5px;
+                    }
+
+
+                    .trust-contact {
+
+                        text-align: right;
+
+                        font-size: 5.2px;
+
+                        line-height: 1.35;
+
+                        max-width: 82px;
+
+                        word-break: break-word;
+                    }
+
+
+                    .id-card-title {
+
+                        text-align: center;
+
+                        padding: 5px 5px 3px;
+
+                        flex-shrink: 0;
+                    }
+
+
+                    .id-card-title h2 {
+
+                        margin: 0;
+
+                        color: #17365d;
+
+                        font-size: 9.5px;
+                    }
+
+
+                    .id-card-title p {
+
+                        margin: 2px 0 0;
+
+                        font-size: 5.5px;
+
+                        color: #666;
+                    }
+
+
+                    .id-card-main {
+
+                        display: flex;
+
+                        gap: 6px;
+
+                        padding: 4px 7px 3px;
+
+                        flex: 1;
+
+                        min-height: 0;
+
+                        overflow: hidden;
+                    }
+
+
+                    .member-photo-area {
+
+                        width: 64px;
+
+                        flex-shrink: 0;
+
+                        text-align: center;
+                    }
+
+
+                    .member-photo {
+
+                        width: 58px;
+
+                        height: 70px;
+
+                        object-fit: cover;
+
+                        border: 1px solid #17365d;
+
+                        border-radius: 3px;
+
+                        display: block;
+
+                        margin: 0 auto;
+                    }
+
+
+                    .member-signature-title {
+
+                        margin-top: 3px;
+
+                        font-size: 5.5px;
+
+                        font-weight: bold;
+
+                        color: #555;
+                    }
+
+
+                    .member-signature {
+
+                        width: 58px;
+
+                        height: 25px;
+
+                        object-fit: contain;
+
+                        display: block;
+
+                        margin: 2px auto 0;
+
+                        border-bottom:
+                            1px solid #333;
+                    }
+
+
+                    .member-card-details {
+
+                        flex: 1;
+
+                        min-width: 0;
+
+                        overflow: hidden;
+                    }
+
+
+                    .member-detail-row {
+
+                        display: grid;
+
+                        grid-template-columns:
+                            57px 5px minmax(0,1fr);
+
+                        padding: 1.5px 0;
+
+                        font-size: 6px;
+
+                        line-height: 1.15;
+
+                        border-bottom:
+                            1px dotted #ddd;
+                    }
+
+
+                    .member-detail-label {
+
+                        font-weight: bold;
+
+                        color: #444;
+
+                        white-space: nowrap;
+                    }
+
+
+                    .member-detail-colon {
+
+                        text-align: center;
+                    }
+
+
+                    .member-detail-value {
+
+                        color: #111;
+
+                        min-width: 0;
+
+                        word-break: normal;
+
+                        overflow-wrap:
+                            anywhere;
+                    }
+
+
+                    .address-value {
+
+                        line-height: 1.2;
+
+                        max-height: 31px;
+
+                        overflow: hidden;
+                    }
+
+
+                    .id-card-bottom {
+
+                        display: flex;
+
+                        justify-content: center;
+
+                        padding: 3px 7px;
+
+                        border-top:
+                            1px solid #ddd;
+
+                        flex-shrink: 0;
+                    }
+
+
+                    .authority-signature {
+
+                        width: 95px;
+
+                        text-align: center;
+                    }
+
+
+                    .authority-line {
+
+                        height: 17px;
+
+                        border-bottom:
+                            1px solid #333;
+
+                        margin-bottom: 2px;
+                    }
+
+
+                    .authority-label {
+
+                        font-size: 5.5px;
+
+                        font-weight: bold;
+
+                        color: #444;
+                    }
+
+
+                    .id-card-footer {
+
+                        background: #17365d;
+
+                        color: white;
+
+                        text-align: center;
+
+                        padding: 4px;
+
+                        font-size: 5px;
+
+                        line-height: 1.25;
+
+                        flex-shrink: 0;
+                    }
+
+
+                    .trust-name {
+
+                        font-weight: bold;
+
+                        font-size: 6.5px;
+                    }
+
+
+                    .trust-address {
+
+                        font-size: 5px;
+                    }
+
+
+                    .trust-email {
+
+                        font-size: 4.6px;
+
+                        word-break: break-all;
+                    }
+
+                </style>
+
+            </head>
+
+
+            <body>
+
+                ${cardHtml}
+
+            </body>
+
+            </html>
+
+        `);
+
+
+        downloadWindow.document.close();
+
+
+        setTimeout(function() {
+
+            downloadWindow.print();
+
+        }, 500);
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

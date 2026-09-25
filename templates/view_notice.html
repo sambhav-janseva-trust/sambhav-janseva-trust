@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>View Notice - Sambhav Janseva Trust</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .notice-box {
+        background: white;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .header {
+        text-align: center;
+        color: #173b5f;
+        margin-bottom: 25px;
+    }
+
+    .header h1 {
+        margin: 0 0 8px;
+    }
+
+    .header p {
+        margin: 0;
+        color: #666;
+    }
+
+    .title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #173b5f;
+        margin-bottom: 18px;
+        line-height: 1.3;
+    }
+
+    .info {
+        background: #eef4f8;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        line-height: 1.8;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 5px 11px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .published {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .draft {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .description {
+        padding: 20px;
+        background: #fafafa;
+        border: 1px solid #e1e5e9;
+        border-radius: 8px;
+        line-height: 1.8;
+        white-space: pre-wrap;
+        margin-bottom: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .buttons a {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 7px;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+    }
+
+    .edit-btn {
+        background: #fd7e14;
+    }
+
+    .back-btn {
+        background: #555;
+    }
+
+    .list-btn {
+        background: #0d6efd;
+    }
+
+    @media (max-width: 600px) {
+
+        body {
+            padding: 12px;
+        }
+
+        .notice-box {
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 23px;
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
+</head><body><div class="container"><div class="notice-box">
+
+    <div class="header">
+        <h1>📢 Notice Details</h1>
+        <p>Sambhav Janseva Trust</p>
+    </div>
+
+    <div class="title">
+        {{ notice.title }}
+    </div>
+
+    <div class="info">
+
+        <div>
+            <span class="label">Notice ID:</span>
+            {{ notice.id }}
+        </div>
+
+        <div>
+            <span class="label">Notice Date:</span>
+            {{ notice.notice_date or "Not specified" }}
+        </div>
+
+        <div>
+            <span class="label">Status:</span>
+
+            <span class="status
+                {% if notice.status == 'Published' %}
+                    published
+                {% else %}
+                    draft
+                {% endif %}
+            ">
+                {{ notice.status }}
+            </span>
+        </div>
+
+        {% if notice.created_at %}
+        <div>
+            <span class="label">Created:</span>
+            {{ notice.created_at.strftime('%d-%m-%Y %I:%M %p') }}
+        </div>
+        {% endif %}
+
+    </div>
+
+    <div class="description">
+        {{ notice.description }}
+    </div>
+
+    <div class="buttons">
+
+        <a
+            href="/admin/notices/{{ notice.id }}/edit"
+            class="edit-btn"
+        >
+            ✏️ Edit Notice
+        </a>
+
+        <a
+            href="/admin/notices"
+            class="list-btn"
+        >
+            📋 Back to Notices
+        </a>
+
+        <a
+            href="/admin/dashboard"
+            class="back-btn"
+        >
+            🏠 Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</div></body>
+</html>

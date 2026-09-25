@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Home Content - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 25px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 22px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .card h2 {
+            margin: 0 0 18px;
+            font-size: 19px;
+        }
+
+        label {
+            display: block;
+            margin: 16px 0 7px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #6b7280;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        button,
+        a {
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            background: #111827;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #000000;
+        }
+
+        .back {
+            background: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+        }
+
+        .back:hover {
+            background: #e5e7eb;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 18px auto;
+                padding: 0 12px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button,
+            a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🏠 Edit Home Content</h1>
+        <p>Sambhav Janseva Trust — Public Home Page</p>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Home Page Information</h2>
+
+            <form method="POST">
+
+                <label for="title">Main Title</label>
+                <input
+    type="text"
+    id="title"
+    name="title"
+    placeholder="Enter main title"
+    value="{{ content.title or '' }}"
+>
+
+                <label for="subtitle">Subtitle</label>
+                <input
+    type="text"
+    id="subtitle"
+    name="subtitle"
+    placeholder="Enter subtitle"
+    value="{{ content.subtitle or '' }}"
+>
+
+                <label for="description">Home Page Description</label>
+                <textarea
+    id="description"
+    name="description"
+    placeholder="Enter home page description"
+>{{ content.description or '' }}</textarea>
+
+                <div class="buttons">
+
+                    <button type="submit">
+                        Save Home Content
+                    </button>
+
+                    <a href="/admin/website-content" class="back">
+                        ← Back to Website Content
+                    </a>
+
+                    <a href="/admin/dashboard" class="back">
+                        ← Back to Dashboard
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

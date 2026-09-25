@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Founder Profile - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .trust-name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1f3c88;
+            margin: 5px 0;
+        }
+
+        .page-title {
+            font-size: 22px;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+            overflow: hidden;
+        }
+
+        .profile-top {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .founder-photo {
+            width: 180px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #1f3c88;
+            background: #eee;
+        }
+
+        .founder-info {
+            flex: 1;
+        }
+
+        .founder-name {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1f3c88;
+            margin-bottom: 8px;
+        }
+
+        .designation {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .basic-info {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .section {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 21px;
+            font-weight: bold;
+            color: #1f3c88;
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+            color: #444;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .info-box {
+            background: #f8f9fb;
+            border: 1px solid #e1e5ea;
+            border-radius: 8px;
+            padding: 14px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .contact-box {
+            background: #f8f9fb;
+            border-radius: 8px;
+            padding: 18px;
+            line-height: 1.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 20px;
+            background: #1f3c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .back-button:hover {
+            background: #162d68;
+        }
+
+        @media (max-width: 700px) {
+
+            .profile-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .founder-photo {
+                width: 160px;
+                height: 190px;
+            }
+
+            .founder-name {
+                font-size: 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-name {
+                font-size: 21px;
+            }
+
+            .page-title {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+
+        <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Sambhav Janseva Trust Logo"
+            class="logo"
+        >
+
+        <div class="trust-name">
+            Sambhav Janseva Trust
+        </div>
+
+        <div class="page-title">
+            Founder Profile
+        </div>
+
+    </div>
+
+
+    <!-- Main Profile -->
+    <div class="container">
+
+        <div class="profile-card">
+
+            <!-- Founder Basic Information -->
+            <div class="profile-top">
+
+                <img
+                    src="{{ url_for('static', filename='images/founder.png') }}"
+                    alt="Founder Photo"
+                    class="founder-photo"
+                >
+
+                <div class="founder-info">
+
+                    <div class="founder-name">
+                        Aurangjeb Ahmad
+                    </div>
+
+                    <div class="designation">
+                        Founder, Sambhav Janseva Trust
+                    </div>
+
+                    <div class="basic-info">
+
+                        <strong>Date of Birth:</strong>
+                        05.02.2000
+                        <br>
+
+                        <strong>Education:</strong>
+                        12th Pass
+                        <br>
+
+                        <strong>Profession:</strong>
+                        Entrepreneur & Shop Owner — Aura Digital Solution
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- About Founder -->
+            <div class="section">
+
+                <div class="section-title">
+                    About the Founder
+                </div>
+
+                <p>
+                    Aurangjeb Ahmad is the Founder of Sambhav Janseva Trust.
+                    Along with managing his business, Aura Digital Solution,
+                    he believes in contributing to society and supporting
+                    people who need assistance. His aim is to develop a
+                    responsible and service-oriented initiative that can
+                    work for the welfare and betterment of society.
+                </p>
+
+            </div>
+
+
+            <!-- Social Work Experience -->
+            <div class="section">
+
+                <div class="section-title">
+                    Social Work Experience
+                </div>
+
+                <p>
+                    While there is no formal long-term professional experience
+                    in social work, he has been involved in helping people and
+                    contributing to social causes whenever possible. Through
+                    Sambhav Janseva Trust, he aims to give this spirit of service
+                    a more organized and meaningful direction.
+                </p>
+
+            </div>
+
+
+            <!-- Purpose -->
+            <div class="section">
+
+                <div class="section-title">
+                    Purpose of Starting the Trust
+                </div>
+
+                <p>
+                    The purpose of Sambhav Janseva Trust is to provide support
+                    and assistance to people in need, encourage community welfare,
+                    and create a platform where social service can be carried out
+                    in a transparent, organized and responsible manner.
+                </p>
+
+            </div>
+
+
+            <!-- Vision -->
+            <div class="section">
+
+                <div class="section-title">
+                    Vision
+                </div>
+
+                <p>
+                    To build a compassionate and supportive society where people
+                    can come together to help those in need and contribute towards
+                    positive social change.
+                </p>
+
+            </div>
+
+
+            <!-- Mission -->
+            <div class="section">
+
+                <div class="section-title">
+                    Mission
+                </div>
+
+                <p>
+                    To identify genuine needs, provide appropriate assistance,
+                    encourage community participation, and carry out welfare
+                    activities with honesty, transparency and responsibility.
+                </p>
+
+            </div>
+
+
+            <!-- Founder Message -->
+            <div class="section">
+
+                <div class="section-title">
+                    Founder Message
+                </div>
+
+                <p>
+                    Sambhav Janseva Trust has been started with the belief that
+                    even a small effort can make a meaningful difference in
+                    someone’s life. My vision is to bring people together for
+                    service, support those who need help, and build an organization
+                    that works with sincerity, transparency and responsibility.
+                </p>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="section">
+
+                <div class="section-title">
+                    Contact Information
+                </div>
+
+                <div class="contact-box">
+
+                    <strong>Email:</strong>
+                    sambhavjansevatrust@gmail.com
+                    <br>
+
+                    <strong>Address:</strong>
+                    Bisambharpur, Chanayan Bandh, Majhaulia,
+                    West Champaran, Bihar 845454
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Back Button -->
+        <div style="text-align:center;">
+
+            <a href="{{ url_for('home') }}" class="back-button">
+    Back to Home
+</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        © Sambhav Janseva Trust. All Rights Reserved.
+    </div>
+
+</body>
+</html>

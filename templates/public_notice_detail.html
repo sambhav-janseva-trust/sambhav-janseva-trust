@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ notice.title }} - Sambhav Janseva Trust</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        .header {
+            background: #0b5ed7;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .notice-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+        }
+
+        .notice-title {
+            font-size: 28px;
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+
+        .notice-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .notice-description {
+            font-size: 17px;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            color: white;
+            background: #0b5ed7;
+        }
+
+        .btn.home {
+            background: #198754;
+        }
+
+        @media (max-width: 600px) {
+            .notice-title {
+                font-size: 23px;
+            }
+
+            .notice-card {
+                padding: 18px;
+            }
+
+            .notice-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Sambhav Janseva Trust</h1>
+        <p>Public Notice Board</p>
+    </div>
+
+    <div class="container">
+
+        <div class="notice-card">
+
+            <div class="notice-title">
+                {{ notice.title }}
+            </div>
+
+            <div class="notice-date">
+                📅 Date: {{ notice.notice_date or "Not specified" }}
+            </div>
+
+            <div class="notice-description">
+                {{ notice.description }}
+            </div>
+
+            <div class="buttons">
+
+                <a href="/notices" class="btn">
+                    ← Back to Notice Board
+                </a>
+
+                <a href="/" class="btn home">
+                    🏠 Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

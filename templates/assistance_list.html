@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assistance Applications</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-left: 5px;
+        }
+
+        .add-button {
+            background: #198754;
+        }
+
+        .dashboard-button {
+            background: #333;
+        }
+
+        .table-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f2f5;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 7px 12px;
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <div class="top-bar">
+
+        <h1>📋 Assistance Applications</h1>
+
+
+        <div>
+
+            <a href="/admin/assistance/add"
+               class="button add-button">
+
+                + Add Assistance
+
+            </a>
+
+
+            <a href="/admin/dashboard"
+               class="button dashboard-button">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-box">
+
+
+        {% if applications %}
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Application No.</th>
+
+                    <th>Applicant Name</th>
+
+                    <th>Father Name</th>
+
+                    <th>Mobile</th>
+
+                    <th>Assistance Type</th>
+
+                    <th>Amount</th>
+
+                    <th>Application Date</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for application in applications %}
+
+
+                <tr>
+
+
+                    <td>
+                        {{ application.application_no or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.applicant_name or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.father_name or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.mobile or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.assistance_type or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.assistance_amount or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ application.application_date or "-" }}
+                    </td>
+
+
+                    <td class="status">
+                        {{ application.status or "Pending" }}
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            href="{{ url_for(
+                                'view_assistance',
+                                application_id=application.id
+                            ) }}"
+                            class="view-button"
+                        >
+                            View
+                        </a>
+
+                    </td>
+
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+
+        {% else %}
+
+
+        <div class="empty">
+
+            No Assistance Applications found.
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

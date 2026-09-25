@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Photographs - Sambhav Janseva Trust</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #173b5f;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            background: #eef4f8;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccd3da;
+            border-radius: 7px;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            background: white;
+            padding: 9px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        button,
+        .back {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        button {
+            background: #198754;
+            color: white;
+        }
+
+        button:hover {
+            background: #157347;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+        }
+
+        .back:hover {
+            background: #444;
+        }
+
+        .note {
+            margin-top: 18px;
+            padding: 12px;
+            background: #fff8e1;
+            border-radius: 7px;
+            font-size: 13px;
+            color: #665c00;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .box {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="box">
+
+        <h1>
+            📷 Add Photograph
+        </h1>
+
+        <div class="info">
+
+            <strong>Sambhav Janseva Trust</strong><br>
+
+            Add a photograph for a Program / Event.
+
+        </div>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <label>
+                Photograph Title
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter photograph title"
+                required
+            >
+
+
+            <label>
+                Program / Event
+            </label>
+
+            <input
+                type="text"
+                name="program"
+                placeholder="Enter Program / Event name"
+                required
+            >
+
+
+            <label>
+                Photograph Date
+            </label>
+
+            <input
+                type="date"
+                name="photo_date"
+            >
+
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                name="description"
+                placeholder="Enter photograph description"
+            ></textarea>
+
+
+            <label>
+                Select Photograph
+            </label>
+
+            <input
+                type="file"
+                name="photograph"
+                accept="image/*"
+                required
+            >
+
+
+            <div class="buttons">
+
+                <button type="submit">
+                    📤 Upload Photograph
+                </button>
+
+                <a href="/admin/dashboard"
+                   class="back">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </form>
+
+
+        <div class="note">
+
+            <strong>Note:</strong>
+            Please select a clear image file such as JPG, JPEG or PNG.
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

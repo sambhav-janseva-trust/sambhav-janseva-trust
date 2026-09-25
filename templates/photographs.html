@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Photographs - Sambhav Janseva Trust</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: #173b5f;
+        }
+
+        .subtitle {
+            color: #666;
+        }
+
+        .buttons {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 11px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .add-button {
+            background: #198754;
+        }
+
+        .dashboard-button {
+            background: #555;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .photo-box {
+            width: 100%;
+            height: 300px;
+            background: #f1f3f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .details {
+            padding: 16px;
+        }
+
+        .details h3 {
+            margin: 0 0 10px;
+            color: #173b5f;
+        }
+
+        .details p {
+            margin: 7px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .card-button {
+            flex: 1;
+            padding: 10px 8px;
+            border-radius: 7px;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .download-button {
+            background: #0d6efd;
+        }
+
+        .delete-button {
+            background: #dc3545;
+            border: none;
+            cursor: pointer;
+        }
+
+        .empty {
+            background: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            color: #666;
+        }
+
+        .delete-form {
+            flex: 1;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-box {
+                height: 260px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>📷 Photographs</h1>
+
+        <div class="subtitle">
+            Sambhav Janseva Trust
+        </div>
+
+        <div class="buttons">
+
+            <a href="/admin/photographs/add"
+               class="button add-button">
+                + Upload Photograph
+            </a>
+
+            <a href="/admin/dashboard"
+               class="button dashboard-button">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    {% if photographs %}
+
+    <div class="gallery">
+
+        {% for photograph in photographs %}
+
+        <div class="card">
+
+            <div class="photo-box">
+
+                <img
+                    src="{{ url_for('photograph_file', filename=photograph.filename) }}"
+                    class="photo"
+                    alt="{{ photograph.title }}"
+                >
+
+            </div>
+
+            <div class="details">
+
+                <h3>
+                    {{ photograph.title }}
+                </h3>
+
+                <p>
+                    <strong>Program / Event:</strong>
+                    {{ photograph.program }}
+                </p>
+
+                {% if photograph.photo_date %}
+
+                <p>
+                    <strong>Date:</strong>
+                    {{ photograph.photo_date }}
+                </p>
+
+                {% endif %}
+
+                {% if photograph.description %}
+
+                <p>
+                    <strong>Description:</strong>
+                    {{ photograph.description }}
+                </p>
+
+                {% endif %}
+
+
+                <div class="card-buttons">
+
+                    <a href="{{ url_for('view_photograph', photograph_id=photograph.id) }}" class="card-button view-button">
+    👁️ View
+</a>
+
+<a href="{{ url_for('edit_photograph', photograph_id=photograph.id) }}" class="card-button edit-button">
+    ✏️ Edit
+</a>
+
+<a href="{{ url_for('download_photograph', photograph_id=photograph.id) }}" class="card-button download-button">
+    ⬇️ Download
+</a>
+
+<form method="POST"
+      action="{{ url_for('delete_photograph', photograph_id=photograph.id) }}"
+      class="delete-form"
+      onsubmit="return confirm('क्या आप इस photograph को delete करना चाहते हैं?');">
+
+    <button type="submit" class="card-button delete-button">
+        🗑️ Delete
+    </button>
+
+</form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+
+        <h2>📷 No Photographs Found</h2>
+
+        <p>
+            अभी तक कोई photograph upload नहीं की गई है।
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #123b63, #1f5f8b);
+            color: white;
+            padding: 22px 0;
+            overflow-y: auto;
+        }
+
+        .logo {
+            padding: 0 22px 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+        }
+
+        /* Trust Logo */
+        .trust-logo {
+            width: 82px;
+            height: 82px;
+            object-fit: contain;
+            display: block;
+            background: white;
+            border-radius: 16px;
+            padding: 5px;
+            margin-bottom: 12px;
+        }
+
+        .logo h2 {
+            margin: 0;
+            font-size: 19px;
+            line-height: 1.3;
+        }
+
+        .logo p {
+            margin: 6px 0 0;
+            font-size: 12px;
+            opacity: 0.78;
+        }
+
+        .menu {
+            padding: 18px 12px;
+        }
+
+        .menu-title {
+            padding: 0 10px 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 13px;
+            margin-bottom: 4px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 9px;
+            transition: 0.2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255,255,255,0.14);
+        }
+
+        .menu-icon {
+            width: 24px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* Main */
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: white;
+            padding: 17px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar h1 {
+            margin: 0;
+            font-size: 22px;
+            color: #173b5f;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-badge {
+            background: #eef5fb;
+            color: #1f5f8b;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .logout {
+            background: #dc3545;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 28px;
+        }
+
+        /* Welcome */
+        .welcome {
+            background: linear-gradient(135deg, #1f5f8b, #3184b5);
+            color: white;
+            padding: 27px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 22px rgba(31,95,139,0.18);
+        }
+
+        .welcome h2 {
+            margin: 0 0 7px;
+            font-size: 25px;
+        }
+
+        .welcome p {
+            margin: 0;
+            opacity: 0.88;
+            font-size: 14px;
+        }
+
+        /* Statistics */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 21px;
+            border-radius: 14px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+            border: 1px solid #edf1f5;
+            transition: 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.09);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            background: #eaf4fb;
+        }
+
+        .stat-card .label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .number {
+            font-size: 29px;
+            font-weight: bold;
+            color: #173b5f;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 23px;
+            border-radius: 14px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+            border: 1px solid #edf1f5;
+            margin-bottom: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            color: #173b5f;
+            font-size: 18px;
+        }
+
+        .section-header p {
+            margin: 4px 0 0;
+            color: #7b8490;
+            font-size: 12px;
+        }
+
+        /* Quick Actions */
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 16px;
+            background: #f7f9fc;
+            border: 1px solid #e9edf2;
+            border-radius: 11px;
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .action:hover {
+            background: #eef6fb;
+            border-color: #c9e1ef;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #e4f1f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            flex-shrink: 0;
+        }
+
+        .action-text span {
+            display: block;
+            font-weight: normal;
+            font-size: 11px;
+            color: #7b8490;
+            margin-top: 3px;
+        }
+
+        /* Mobile */
+        @media (max-width: 1100px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+            }
+
+            .menu-title {
+                grid-column: 1 / -1;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                gap: 12px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .welcome {
+                padding: 21px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .menu {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .welcome h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <!-- Sambhav Janseva Trust Logo -->
+        <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Sambhav Janseva Trust Logo"
+            class="trust-logo"
+        >
+
+        <h2>Sambhav Janseva Trust</h2>
+
+        <p>
+            Management & Administration Panel
+        </p>
+    </div>
+
+    <nav class="menu">
+
+        <div class="menu-title">
+            Main Menu
+        </div>
+
+        <a href="/admin/dashboard" class="active">
+            <span class="menu-icon">🏠</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/admin/members">
+            <span class="menu-icon">👥</span>
+            <span>Members</span>
+        </a>
+
+        <a href="/admin/volunteers">
+            <span class="menu-icon">🤝</span>
+            <span>Volunteers</span>
+        </a>
+
+        <!-- Assistance Applications -->
+        <a href="/admin/assistance">
+            <span class="menu-icon">📋</span>
+            <span>Assistance Applications</span>
+        </a>
+
+        <a href="/admin/donations">
+            <span class="menu-icon">💰</span>
+            <span>Donations</span>
+        </a>
+
+        <a href="/admin/programs">
+    <span class="menu-icon">📅</span>
+    <span>Programs / Events</span>
+</a>
+
+        <div class="menu-title">
+            Website
+        </div>
+
+        <a href="/admin/notices">
+    <span class="menu-icon">📢</span>
+    <span>Notice Board</span>
+</a>
+
+        <a href="/admin/website-content">
+    <span class="menu-icon">🌐</span>
+    <span>Website Content</span>
+</a>
+
+        <a href="/founder-profile">
+            <span class="menu-icon">👤</span>
+            <span>Founder Profile</span>
+        </a>
+
+        <a href="#">
+            <span class="menu-icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- Main -->
+<main class="main">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+
+        <h1>
+            Admin Dashboard
+        </h1>
+
+        <div class="topbar-right">
+
+            <div class="admin-badge">
+                👤 Administrator
+            </div>
+
+            <a href="/admin/logout" class="logout">
+                Logout
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+        <!-- Welcome -->
+        <div class="welcome">
+
+            <h2>
+                Welcome, Admin 👋
+            </h2>
+
+            <p>
+                Sambhav Janseva Trust Management System
+            </p>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats">
+
+            <!-- Members -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div>
+
+                        <div class="label">
+                            Total Members
+                        </div>
+
+                        <div class="number">
+                            {{ total_members }}
+                        </div>
+
+                    </div>
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Volunteers -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div>
+
+                        <div class="label">
+                            Volunteers
+                        </div>
+
+                        <div class="number">
+                            {{ total_volunteers }}
+                        </div>
+
+                    </div>
+
+                    <div class="stat-icon">
+                        🤝
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Assistance Applications -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div>
+
+                        <div class="label">
+                            Assistance Applications
+                        </div>
+
+                        <div class="number">
+                            {{ total_assistance }}
+                        </div>
+
+                    </div>
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Donations -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div>
+
+                        <div class="label">
+                            Donations
+                        </div>
+
+                        <div class="number">
+                            {{ total_donations }}
+                        </div>
+
+                    </div>
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Quick Actions -->
+        <div class="section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                    <p>
+                        Frequently used management options
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <!-- Add Member -->
+                <a href="/admin/members/add" class="action">
+
+                    <div class="action-icon">
+                        ➕
+                    </div>
+
+                    <div class="action-text">
+
+                        + नया सदस्य जोड़ें
+
+                        <span>
+                            Add New Member
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Members List -->
+                <a href="/admin/members" class="action">
+
+                    <div class="action-icon">
+                        👥
+                    </div>
+
+                    <div class="action-text">
+
+                        Members List
+
+                        <span>
+                            View All Members
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Add Volunteer -->
+                <a href="/admin/volunteers/add" class="action">
+
+                    <div class="action-icon">
+                        🤝
+                    </div>
+
+                    <div class="action-text">
+
+                        Add Volunteer
+
+                        <span>
+                            Register Volunteer
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Volunteers List -->
+                <a href="/admin/volunteers" class="action">
+
+                    <div class="action-icon">
+                        🤝
+                    </div>
+
+                    <div class="action-text">
+
+                        Volunteers
+
+                        <span>
+                            View All Volunteers
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Add Assistance Application -->
+                <a href="/admin/assistance/add" class="action">
+
+                    <div class="action-icon">
+                        📋
+                    </div>
+
+                    <div class="action-text">
+
+                        Add Assistance Application
+
+                        <span>
+                            Create New Assistance Request
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- View Assistance Applications -->
+                <a href="/admin/assistance" class="action">
+
+                    <div class="action-icon">
+                        📋
+                    </div>
+
+                    <div class="action-text">
+
+                        View Applications
+
+                        <span>
+                            View All Assistance Applications
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Donations -->
+                <a href="/admin/donations" class="action">
+
+                    <div class="action-icon">
+                        💰
+                    </div>
+
+                    <div class="action-text">
+
+                        Donations
+
+                        <span>
+                            Donation Management
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Programs -->
+                <a href="/admin/programs/add" class="action">
+
+                    <div class="action-icon">
+                        📅
+                    </div>
+
+                    <div class="action-text">
+
+                        Add Program
+
+                        <span>
+                            Create Program / Event
+                        </span>
+
+                    </div>
+
+                </a>
+<!-- View Programs -->
+<a href="/admin/programs" class="action">
+
+    <div class="action-icon">
+        📋
+    </div>
+
+    <div class="action-text">
+
+        View Programs / Events
+
+        <span>
+            View All Programs / Events
+        </span>
+
+    </div>
+
+</a>
+<a href="/admin/photographs/add" class="action">
+    <div class="action-icon">📷</div>
+    <div class="action-text">
+        Upload Photographs
+        <span>Add Photographs</span>
+    </div>
+</a>
+<a href="/admin/photographs" class="action">
+    <div class="action-icon">🖼️</div>
+    <div class="action-text">
+        View Photographs
+        <span>View All Photographs</span>
+    </div>
+</a>
+
+                <!-- Notices -->
+                <a href="/admin/notices/add" class="action">
+
+                    <div class="action-icon">
+                        📢
+                    </div>
+
+                    <div class="action-text">
+
+                        Add Notice
+
+                        <span>
+                            Publish New Notice
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

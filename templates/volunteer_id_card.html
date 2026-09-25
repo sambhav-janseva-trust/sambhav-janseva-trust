@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Volunteer ID Card</title>
+
+    <style>
+
+        @page {
+            size: 2.125in 3.37in;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #eeeeee;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 2.125in;
+            height: 3.37in;
+            background: white;
+            margin: 0 auto;
+            border: 2px solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            padding: 7px 5px 3px 5px;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .trust-name {
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .card-title {
+            font-size: 9px;
+            font-weight: bold;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .photo-box {
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .photo-box img {
+            width: 62px;
+            height: 72px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .details {
+            padding: 4px 8px 0 8px;
+            font-size: 7px;
+            line-height: 1.35;
+        }
+
+        .row {
+            display: flex;
+            margin-bottom: 1px;
+        }
+
+        .label {
+            width: 40%;
+            font-weight: bold;
+        }
+
+        .value {
+            width: 60%;
+            word-break: break-word;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 2px 8px 0 8px;
+            margin-top: 3px;
+        }
+
+        .signature-box {
+            width: 62px;
+            text-align: center;
+            font-size: 6px;
+        }
+
+        .signature-box img {
+            width: 58px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        .authority-box {
+            width: 75px;
+            text-align: center;
+            font-size: 6px;
+        }
+
+        .authority-line {
+            height: 22px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 2px;
+        }
+
+        .contact {
+            position: absolute;
+            bottom: 5px;
+            left: 6px;
+            right: 6px;
+            border-top: 1px solid #999;
+            padding-top: 3px;
+            text-align: center;
+            font-size: 5.8px;
+            line-height: 1.35;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .buttons button {
+            padding: 8px 12px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        @media print {
+
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .card {
+                margin: 0;
+            }
+
+            .buttons {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <!-- TRUST LOGO -->
+        <div class="header">
+
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                class="logo"
+                alt="Sambhav Janseva Trust"
+            >
+
+            <div class="trust-name">
+                Sambhav Janseva Trust
+            </div>
+
+            <div class="card-title">
+                Volunteer Identity Card
+            </div>
+
+        </div>
+
+
+        <!-- VOLUNTEER PHOTO -->
+        <div class="photo-box">
+
+            {% if volunteer.photo %}
+
+                <img
+                    src="{{ url_for(
+                        'volunteer_upload',
+                        filename=volunteer.photo
+                    ) }}"
+                    alt="Volunteer Photo"
+                >
+
+            {% else %}
+
+                <div
+                    style="
+                        width:62px;
+                        height:72px;
+                        border:1px solid #333;
+                        display:inline-flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:7px;
+                    "
+                >
+                    Photo
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- VOLUNTEER DETAILS -->
+        <div class="details">
+
+            <div class="row">
+                <div class="label">Volunteer ID</div>
+                <div class="value">
+                    {{ volunteer.volunteer_id }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label">Name</div>
+                <div class="value">
+                    {{ volunteer.name }}
+                </div>
+            </div>
+
+            {% if volunteer.father_husband_name %}
+            <div class="row">
+                <div class="label">Father / Husband</div>
+                <div class="value">
+                    {{ volunteer.father_husband_name }}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="label">Mobile</div>
+                <div class="value">
+                    {{ volunteer.mobile }}
+                </div>
+            </div>
+
+            {% if volunteer.email %}
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="value">
+                    {{ volunteer.email }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if volunteer.address %}
+            <div class="row">
+                <div class="label">Address</div>
+                <div class="value">
+                    {{ volunteer.address }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if volunteer.volunteer_type %}
+            <div class="row">
+                <div class="label">Type</div>
+                <div class="value">
+                    {{ volunteer.volunteer_type }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if volunteer.area %}
+            <div class="row">
+                <div class="label">Area</div>
+                <div class="value">
+                    {{ volunteer.area }}
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+
+        <!-- SIGNATURES -->
+        <div class="signature-section">
+
+            <div class="signature-box">
+
+                {% if volunteer.signature %}
+
+                    <img
+                        src="{{ url_for(
+                            'volunteer_upload',
+                            filename=volunteer.signature
+                        ) }}"
+                        alt="Volunteer Signature"
+                    >
+
+                {% else %}
+
+                    <div style="height:22px;"></div>
+
+                {% endif %}
+
+                <div>
+                    Volunteer Signature
+                </div>
+
+            </div>
+
+
+            <div class="authority-box">
+
+                <div class="authority-line"></div>
+
+                <div>
+                    Authority Signature &amp; Seal
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT -->
+        <div class="contact">
+
+            <div>+91 9006373726</div>
+
+            <div>
+                sambhavjansevatrust@gmail.com
+            </div>
+
+            <div>
+                Bisambharpur
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+        <button onclick="window.print()">
+            Print
+        </button>
+
+        <button onclick="downloadCard()">
+            Download
+        </button>
+
+    </div>
+
+
+    <script>
+
+        function downloadCard() {
+            window.print();
+        }
+
+    </script>
+
+</body>
+</html>

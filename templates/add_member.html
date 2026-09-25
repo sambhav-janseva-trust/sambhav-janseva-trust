@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Member - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        .header {
+            background: #1f4e79;
+            color: white;
+            padding: 18px 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-box h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        button,
+        .back-button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+        }
+
+        .back-button {
+            background: #6b7280;
+            color: white;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .form-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>Sambhav Janseva Trust - Add Member</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h2>New Member</h2>
+
+            <form
+                method="POST"
+                action="/admin/members/add"
+                enctype="multipart/form-data"
+            >
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Name *</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Member Name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Father / Husband Name</label>
+                        <input
+                            type="text"
+                            name="father_name"
+                            placeholder="Father / Husband Name"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Mobile No *</label>
+                        <input
+                            type="tel"
+                            name="mobile"
+                            placeholder="Mobile No"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Gender</label>
+                        <select name="gender">
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>DOB</label>
+                        <input
+                            type="date"
+                            name="dob"
+                        >
+                    </div>
+
+                    <div class="field full">
+                        <label>Address</label>
+                        <textarea
+                            name="address"
+                            placeholder="Full Address"
+                        ></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label>Membership Type</label>
+                        <select name="membership_type">
+                            <option value="General">General</option>
+                            <option value="Volunteer">Volunteer</option>
+                            <option value="Life Member">Life Member</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Joining Date</label>
+                        <input
+                            type="date"
+                            name="membership_date"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Member Photo</label>
+                        <input
+                            type="file"
+                            name="photo"
+                            accept="image/*"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Member Signature</label>
+                        <input
+                            type="file"
+                            name="signature"
+                            accept="image/*"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>ID Proof</label>
+                        <input
+                            type="file"
+                            name="id_proof"
+                            accept="image/*,.pdf"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Address Proof</label>
+                        <input
+                            type="file"
+                            name="address_proof"
+                            accept="image/*,.pdf"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button type="submit">
+                        Save Member
+                    </button>
+
+                    <a
+                        href="/admin/dashboard"
+                        class="back-button"
+                    >
+                        Back Dashboard
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

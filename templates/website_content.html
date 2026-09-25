@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Content - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .card p {
+            margin: 0 0 18px;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            background: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+        }
+
+        .button:hover {
+            background: #e5e7eb;
+        }
+
+        .back {
+            background: #111827;
+            color: #ffffff;
+            border-color: #111827;
+        }
+
+        .back:hover {
+            background: #000000;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .container {
+                margin: 18px auto;
+                padding: 0 12px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🌐 Website Content</h1>
+        <p>Sambhav Janseva Trust website content management</p>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>🏠 Home Page</h2>
+            <p>
+                Manage the main information and important content
+                displayed on the public Home page.
+            </p>
+
+            <div class="buttons">
+                <a href="/admin/website-content/home" class="button">Edit Home Content</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>ℹ️ About Trust</h2>
+            <p>
+                Manage the Trust introduction, mission, vision and
+                other basic information.
+            </p>
+
+            <div class="buttons">
+                <a href="/admin/website-content/about" class="button">
+    Edit About Content
+</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📞 Contact Information</h2>
+            <p>
+                Manage the public contact details displayed on the website.
+            </p>
+
+            <div class="buttons">
+                <a href="/admin/website-content/contact" class="button">
+    Edit Contact Information
+</a>
+            </div>
+        </div>
+
+        <div class="content-card">
+
+    <h3>🚀 Future Content</h3>
+
+    <p>
+        Additional website content can be managed here.
+    </p>
+
+    <a href="/admin/website-content/future" class="button">
+        Edit Future Content
+    </a>
+
+</div>
+
+        <div class="buttons">
+            <a href="/admin/dashboard" class="button back">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

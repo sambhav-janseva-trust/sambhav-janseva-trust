@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>संभव जनसेवा ट्रस्ट</title>
+
+<style>
+
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Devanagari", sans-serif;
+    color: #172033;
+    background: #f6f8fb;
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #123d70;
+    color: white;
+    padding: 16px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #123d70,
+        #2d6a9f
+    );
+
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 28px;
+}
+
+.button {
+    display: inline-block;
+    padding: 13px 22px;
+    margin: 5px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    background: white;
+    color: #123d70;
+}
+
+.button.primary {
+    background: #123d70;
+    color: white;
+    border: 1px solid white;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 65px 6%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #123d70;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #667085;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e2e7ef;
+    border-radius: 12px;
+    padding: 25px;
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    color: #123d70;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+
+    border: 1px solid #e2e7ef;
+}
+
+/* =========================
+   APPLICATION / DONATION
+========================= */
+
+.form-box {
+    max-width: 750px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+
+    border-radius: 12px;
+    border: 1px solid #e2e7ef;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 6px;
+
+    border: 1px solid #ccd4df;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+}
+
+.submit-button {
+
+    background: #123d70;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #0d2d54;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-card {
+    text-align: center;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111827;
+    color: white;
+    padding: 40px 6%;
+}
+
+.footer-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 25px;
+}
+
+footer h3 {
+    margin-top: 0;
+}
+
+footer p {
+    color: #cbd5e1;
+}
+
+.copyright {
+    border-top: 1px solid #374151;
+    margin-top: 25px;
+    padding-top: 20px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 65px 20px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        संभव जनसेवा ट्रस्ट
+    </div>
+
+    <nav>
+
+        <a href="#about">
+            परिचय
+        </a>
+
+        <a href="#services">
+            हमारी सेवाएँ
+        </a>
+
+        <a href="#programs">
+            कार्यक्रम
+        </a>
+
+        <a href="#membership">
+            सदस्यता
+        </a>
+
+        <a href="#apply">
+            सहायता आवेदन
+        </a>
+
+        <a href="#donate">
+            दान करें
+        </a>
+
+        <a href="#contact">
+            संपर्क
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <h1>
+        संभव जनसेवा ट्रस्ट
+    </h1>
+
+    <p>
+        समाज सेवा, सहायता और जनकल्याण के लिए
+        समर्पित एक पहल।
+    </p>
+
+    <a
+        href="#apply"
+        class="button"
+    >
+        सहायता के लिए आवेदन
+    </a>
+
+    <a
+        href="#donate"
+        class="button primary"
+    >
+        दान करें
+    </a>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="section-title">
+
+        <h2>
+            हमारे बारे में
+        </h2>
+
+        <p>
+            संभव जनसेवा ट्रस्ट का परिचय
+        </p>
+
+    </div>
+
+    <div class="about-box">
+
+        <p>
+            संभव जनसेवा ट्रस्ट समाज सेवा,
+            जनकल्याण और जरूरतमंद लोगों की
+            सहायता के उद्देश्य से कार्य करने
+            के लिए बनाया जा रहा है।
+        </p>
+
+        <p>
+            ट्रस्ट की आधिकारिक जानकारी,
+            उद्देश्य, कार्यक्षेत्र और अन्य
+            विवरण बाद में Founder Panel
+            से बदले जा सकेंगे।
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section id="services">
+
+    <div class="section-title">
+
+        <h2>
+            हमारी सेवाएँ
+        </h2>
+
+        <p>
+            समाज सेवा के प्रमुख क्षेत्र
+        </p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>
+                शिक्षा सहायता
+            </h3>
+
+            <p>
+                जरूरतमंद विद्यार्थियों और
+                परिवारों के लिए शिक्षा संबंधी
+                सहायता कार्यक्रम।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                चिकित्सा सहायता
+            </h3>
+
+            <p>
+                जरूरतमंद लोगों के लिए
+                चिकित्सा एवं स्वास्थ्य
+                सहायता से जुड़े कार्य।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                जनसेवा
+            </h3>
+
+            <p>
+                जरूरत और परिस्थिति के अनुसार
+                सामाजिक सहायता एवं जनसेवा।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                सामाजिक कल्याण
+            </h3>
+
+            <p>
+                समाज के विभिन्न वर्गों के
+                कल्याण के लिए कार्यक्रम।
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROGRAMS
+========================= -->
+
+<section id="programs">
+
+    <div class="section-title">
+
+        <h2>
+            कार्यक्रम और गतिविधियाँ
+        </h2>
+
+        <p>
+            ट्रस्ट द्वारा किए जाने वाले
+            कार्यक्रम यहाँ प्रदर्शित होंगे।
+        </p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>
+                आगामी कार्यक्रम
+            </h3>
+
+            <p>
+                कार्यक्रम की तारीख, स्थान,
+                उद्देश्य और विवरण यहाँ
+                दिखाई देगा।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                सेवा गतिविधियाँ
+            </h3>
+
+            <p>
+                ट्रस्ट की पूरी की गई
+                गतिविधियों और कार्यक्रमों
+                की जानकारी यहाँ होगी।
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                जनसहभागिता
+            </h3>
+
+            <p>
+                Volunteers और समाज के
+                सहयोग से होने वाले
+                कार्यक्रम यहाँ दिखेंगे।
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MEMBERSHIP
+========================= -->
+
+<section id="membership">
+
+    <div class="section-title">
+
+        <h2>
+            सदस्यता
+        </h2>
+
+        <p>
+            ट्रस्ट की सदस्यता Trust के
+            नियमों के अनुसार होगी।
+        </p>
+
+    </div>
+
+    <div class="form-box">
+
+        <form
+            onsubmit="membershipSubmit(event)"
+        >
+
+            <div class="form-row">
+
+                <label>
+                    पूरा नाम
+
+                    <input
+                        type="text"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    मोबाइल नंबर
+
+                    <input
+                        type="tel"
+                        required
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+                ईमेल
+
+                <input
+                    type="email"
+                >
+
+            </label>
+
+
+            <label>
+                पता
+
+                <textarea
+                    required
+                ></textarea>
+
+            </label>
+
+
+            <button
+                class="submit-button"
+                type="submit"
+            >
+                सदस्यता आवेदन भेजें
+            </button>
+
+        </form>
+
+        <p id="membershipMessage"></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HELP APPLICATION
+========================= -->
+
+<section id="apply">
+
+    <div class="section-title">
+
+        <h2>
+            सहायता के लिए आवेदन
+        </h2>
+
+        <p>
+            जरूरतमंद व्यक्ति सहायता के लिए
+            आवेदन भेज सकते हैं।
+        </p>
+
+    </div>
+
+    <div class="form-box">
+
+        <form
+            onsubmit="helpSubmit(event)"
+        >
+
+            <div class="form-row">
+
+                <label>
+                    नाम
+
+                    <input
+                        type="text"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    मोबाइल
+
+                    <input
+                        type="tel"
+                        required
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+                सहायता का प्रकार
+
+                <select required>
+
+                    <option value="">
+                        चुनें
+                    </option>
+
+                    <option>
+                        शिक्षा सहायता
+                    </option>
+
+                    <option>
+                        चिकित्सा सहायता
+                    </option>
+
+                    <option>
+                        आर्थिक सहायता
+                    </option>
+
+                    <option>
+                        अन्य
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+                विवरण
+
+                <textarea
+                    required
+                ></textarea>
+
+            </label>
+
+
+            <button
+                class="submit-button"
+                type="submit"
+            >
+                आवेदन भेजें
+            </button>
+
+        </form>
+
+        <p id="helpMessage"></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DONATION
+========================= -->
+
+<section id="donate">
+
+    <div class="section-title">
+
+        <h2>
+            दान करें
+        </h2>
+
+        <p>
+            जनसेवा में सहयोग करें।
+        </p>
+
+    </div>
+
+    <div class="form-box">
+
+        <form
+            onsubmit="donationSubmit(event)"
+        >
+
+            <div class="form-row">
+
+                <label>
+                    नाम
+
+                    <input
+                        type="text"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    मोबाइल
+
+                    <input
+                        type="tel"
+                        required
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+                ईमेल
+
+                <input
+                    type="email"
+                >
+
+            </label>
+
+
+            <label>
+                दान की राशि (₹)
+
+                <input
+                    type="number"
+                    min="1"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+                दान का उद्देश्य
+
+                <select>
+
+                    <option>
+                        सामान्य जनसेवा
+                    </option>
+
+                    <option>
+                        शिक्षा सहायता
+                    </option>
+
+                    <option>
+                        चिकित्सा सहायता
+                    </option>
+
+                    <option>
+                        अन्य
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <button
+                class="submit-button"
+                type="submit"
+            >
+                दान जारी रखें
+            </button>
+
+        </form>
+
+        <p id="donationMessage"></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <div class="section-title">
+
+        <h2>
+            संपर्क करें
+        </h2>
+
+        <p>
+            ट्रस्ट से संपर्क करने के लिए
+            आधिकारिक जानकारी।
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card contact-card">
+
+            <h3>
+                कार्यालय पता
+            </h3>
+
+            <p>
+                आधिकारिक पता बाद में
+                यहाँ जोड़ा जाएगा।
+            </p>
+
+        </div>
+
+
+        <div class="card contact-card">
+
+            <h3>
+                मोबाइल
+            </h3>
+
+            <p>
+                आधिकारिक मोबाइल नंबर
+                बाद में जोड़ा जाएगा।
+            </p>
+
+        </div>
+
+
+        <div class="card contact-card">
+
+            <h3>
+                ईमेल
+            </h3>
+
+            <p>
+                आधिकारिक ईमेल बाद में
+                जोड़ा जाएगा।
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>
+                संभव जनसेवा ट्रस्ट
+            </h3>
+
+            <p>
+                समाज सेवा और जनकल्याण
+                के लिए समर्पित।
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                महत्वपूर्ण लिंक
+            </h3>
+
+            <p>
+                परिचय
+            </p>
+
+            <p>
+                कार्यक्रम
+            </p>
+
+            <p>
+                सदस्यता
+            </p>
+
+            <p>
+                दान
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                संपर्क
+            </h3>
+
+            <p>
+                आधिकारिक संपर्क विवरण
+                जल्द जोड़ा जाएगा।
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 संभव जनसेवा ट्रस्ट —
+        सर्वाधिकार सुरक्षित।
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     BASIC FORM FUNCTIONS
+========================= -->
+
+<script>
+
+function membershipSubmit(event) {
+
+    event.preventDefault();
+
+    document.getElementById(
+        "membershipMessage"
+    ).innerText =
+        "आपका सदस्यता आवेदन प्राप्त हुआ।";
+
+}
+
+
+function helpSubmit(event) {
+
+    event.preventDefault();
+
+    document.getElementById(
+        "helpMessage"
+    ).innerText =
+        "आपका सहायता आवेदन प्राप्त हुआ।";
+
+}
+
+
+function donationSubmit(event) {
+
+    event.preventDefault();
+
+    document.getElementById(
+        "donationMessage"
+    ).innerText =
+        "दान प्रक्रिया अगले चरण में payment gateway से जोड़ी जाएगी।";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

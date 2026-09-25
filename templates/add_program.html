@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Program - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin: 0 0 25px;
+            text-align: center;
+            color: #173b5f;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccd3da;
+            border-radius: 7px;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button,
+        .back {
+            padding: 11px 18px;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #1f5f8b;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+        }
+
+        button:hover {
+            background: #174d73;
+        }
+
+        .back:hover {
+            background: #444;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .box {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button,
+            .back {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>
+        📅 Add Program / Event
+    </h1>
+
+    <form method="POST">
+
+        
+
+
+        <label>
+            Program / Event Title *
+        </label>
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Enter program or event title"
+            required
+        >
+
+
+        <label>
+            Program Type
+        </label>
+
+        <select name="program_type">
+
+            <option value="Program">
+                Program
+            </option>
+
+            <option value="Event">
+                Event
+            </option>
+
+            <option value="Camp">
+                Camp
+            </option>
+
+            <option value="Meeting">
+                Meeting
+            </option>
+
+            <option value="Awareness">
+                Awareness Program
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
+
+
+        <label>
+            Program Date
+        </label>
+
+        <input
+            type="date"
+            name="program_date"
+        >
+
+
+        <label>
+            Start Time
+        </label>
+
+        <input
+            type="time"
+            name="start_time"
+        >
+
+
+        <label>
+            End Time
+        </label>
+
+        <input
+            type="time"
+            name="end_time"
+        >
+
+
+        <label>
+            Venue
+        </label>
+
+        <input
+            type="text"
+            name="venue"
+            placeholder="Enter venue / location"
+        >
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            name="description"
+            placeholder="Enter program / event details"
+        ></textarea>
+
+
+        <label>
+            Status
+        </label>
+
+        <select name="status">
+
+            <option value="Upcoming">
+                Upcoming
+            </option>
+
+            <option value="Ongoing">
+                Ongoing
+            </option>
+
+            <option value="Completed">
+                Completed
+            </option>
+
+            <option value="Cancelled">
+                Cancelled
+            </option>
+
+        </select>
+
+
+        <label>
+            Remarks
+        </label>
+
+        <textarea
+            name="remarks"
+            placeholder="Enter any additional remarks"
+        ></textarea>
+
+
+        <div class="buttons">
+
+            <button type="submit">
+                ➕ Save Program
+            </button>
+
+            <a
+                href="/admin/dashboard"
+                class="back"
+            >
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

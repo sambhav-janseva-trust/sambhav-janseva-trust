@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assistance Applications</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .status-select {
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            min-width: 150px;
+        }
+
+        .search-btn {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #f1f1f1;
+        }
+
+        .view-btn {
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .edit-btn {
+            background: #198754;
+            color: white;
+            text-decoration: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+        @media (max-width: 700px) {
+            .search-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input,
+            .status-select,
+            .search-btn,
+            .reset-btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Assistance Applications</h1>
+
+        <form
+            method="GET"
+            action="{{ url_for('assistance_list') }}"
+            class="search-form"
+        >
+
+            <input
+                type="text"
+                name="search"
+                class="search-input"
+                placeholder="Search by Application ID, Name or Mobile"
+                value="{{ search or '' }}"
+            >
+
+            <select
+                name="status"
+                class="status-select"
+            >
+
+                <option
+                    value="All"
+                    {% if status == "All" %}
+                    selected
+                    {% endif %}
+                >
+                    All Status
+                </option>
+
+                <option
+                    value="Pending"
+                    {% if status == "Pending" %}
+                    selected
+                    {% endif %}
+                >
+                    Pending
+                </option>
+
+                <option
+                    value="Approved"
+                    {% if status == "Approved" %}
+                    selected
+                    {% endif %}
+                >
+                    Approved
+                </option>
+
+                <option
+                    value="Rejected"
+                    {% if status == "Rejected" %}
+                    selected
+                    {% endif %}
+                >
+                    Rejected
+                </option>
+
+            </select>
+
+            <button
+                type="submit"
+                class="search-btn"
+            >
+                Search
+            </button>
+
+            <a
+                href="{{ url_for('assistance_list') }}"
+                class="reset-btn"
+            >
+                Reset
+            </a>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Application ID</th>
+                        <th>Applicant Name</th>
+                        <th>Mobile</th>
+                        <th>Assistance Type</th>
+                        <th>Application Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for application in applications %}
+
+                    <tr>
+
+                        <td>
+                            {{ application.application_id }}
+                        </td>
+
+                        <td>
+                            {{ application.applicant_name }}
+                        </td>
+
+                        <td>
+                            {{ application.mobile }}
+                        </td>
+
+                        <td>
+                            {{ application.assistance_type or "-" }}
+                        </td>
+
+                        <td>
+                            {{ application.application_date or "-" }}
+                        </td>
+
+                        <td class="status">
+                            {{ application.status }}
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for(
+                                    'view_assistance',
+                                    application_id=application.id
+                                ) }}"
+                                class="view-btn"
+                            >
+                                View
+                            </a>
+
+                            <a
+                                href="{{ url_for(
+                                    'edit_assistance',
+                                    application_id=application.id
+                                ) }}"
+                                class="edit-btn"
+                            >
+                                Edit
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="no-data"
+                        >
+                            No applications found.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

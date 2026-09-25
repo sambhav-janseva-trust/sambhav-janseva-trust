@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Donation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 25px;
+        }
+
+        .box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        textarea {
+            min-height: 80px;
+        }
+
+        button, a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 18px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        button {
+            background: #1976d2;
+            color: white;
+        }
+
+        .cancel {
+            background: #555;
+            color: white;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Edit Donation</h1>
+
+    <form method="POST">
+
+        <label>Donation Date</label>
+        <input type="date" name="donation_date"
+               value="{{ donation.donation_date or '' }}">
+
+        <label>Donation Type</label>
+        <select name="donation_type">
+            <option value="One Time" {% if donation.donation_type == "One Time" %}selected{% endif %}>One Time</option>
+            <option value="Monthly" {% if donation.donation_type == "Monthly" %}selected{% endif %}>Monthly</option>
+            <option value="Yearly" {% if donation.donation_type == "Yearly" %}selected{% endif %}>Yearly</option>
+            <option value="Other" {% if donation.donation_type == "Other" %}selected{% endif %}>Other</option>
+        </select>
+
+        <label>Donor Name *</label>
+        <input type="text" name="donor_name"
+               value="{{ donation.donor_name or '' }}" required>
+
+        <label>Mobile Number</label>
+        <input type="text" name="mobile"
+               value="{{ donation.mobile or '' }}">
+
+        <label>Email</label>
+        <input type="email" name="email"
+               value="{{ donation.email or '' }}">
+
+        <label>PAN</label>
+        <input type="text" name="pan"
+               value="{{ donation.pan or '' }}">
+
+        <label>Address</label>
+        <textarea name="address">{{ donation.address or '' }}</textarea>
+
+        <label>Donation Amount *</label>
+        <input type="number" step="0.01" name="amount"
+               value="{{ donation.amount or '' }}" required>
+
+        <label>Donation Purpose</label>
+        <input type="text" name="purpose"
+               value="{{ donation.purpose or '' }}">
+
+        <label>Payment Mode</label>
+        <select name="payment_mode">
+            <option value="">Select</option>
+            <option value="Cash" {% if donation.payment_mode == "Cash" %}selected{% endif %}>Cash</option>
+            <option value="UPI" {% if donation.payment_mode == "UPI" %}selected{% endif %}>UPI</option>
+            <option value="Bank Transfer" {% if donation.payment_mode == "Bank Transfer" %}selected{% endif %}>Bank Transfer</option>
+            <option value="Cheque" {% if donation.payment_mode == "Cheque" %}selected{% endif %}>Cheque</option>
+            <option value="Other" {% if donation.payment_mode == "Other" %}selected{% endif %}>Other</option>
+        </select>
+
+        <label>Transaction / Reference Number</label>
+        <input type="text" name="transaction_reference"
+               value="{{ donation.transaction_reference or '' }}">
+
+        <label>Payment Status</label>
+        <select name="payment_status">
+            <option value="Received" {% if donation.payment_status == "Received" %}selected{% endif %}>Received</option>
+            <option value="Pending" {% if donation.payment_status == "Pending" %}selected{% endif %}>Pending</option>
+            <option value="Failed" {% if donation.payment_status == "Failed" %}selected{% endif %}>Failed</option>
+        </select>
+
+        <label>Remarks</label>
+        <textarea name="remarks">{{ donation.remarks or '' }}</textarea>
+
+        <button type="submit">Update Donation</button>
+
+        <a href="/admin/donations/{{ donation.id }}" class="cancel">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Donation - Sambhav Janseva Trust</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .topbar {
+            background: white;
+            padding: 17px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .topbar h1 {
+            margin: 0;
+            color: #173b5f;
+            font-size: 22px;
+        }
+
+        .back {
+            background: #1f5f8b;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+            border: 1px solid #edf1f5;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: #173b5f;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #374151;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button,
+        .cancel {
+            padding: 11px 18px;
+            border-radius: 8px;
+            border: none;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button {
+            background: #198754;
+            color: white;
+        }
+
+        .cancel {
+            background: #6c757d;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .topbar {
+                gap: 12px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <h1>💰 Add Donation</h1>
+
+    <a href="/admin/donations" class="back">
+        ← Back to Donations
+    </a>
+
+</header>
+
+
+<div class="content">
+
+    <div class="box">
+
+        <h2>Donation Details</h2>
+
+        <div class="subtitle">
+            Sambhav Janseva Trust में नया Donation दर्ज करें।
+        </div>
+
+
+        <form method="POST" action="/admin/donations/add">
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>Donation Date</label>
+                    <input
+                        type="date"
+                        name="donation_date"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Donation Type</label>
+
+                    <select name="donation_type">
+                        <option value="One Time">One Time</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label>Donor Name *</label>
+                    <input
+                        type="text"
+                        name="donor_name"
+                        placeholder="Donor का नाम"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Mobile Number</label>
+                    <input
+                        type="text"
+                        name="mobile"
+                        placeholder="Mobile Number"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>PAN</label>
+                    <input
+                        type="text"
+                        name="pan"
+                        placeholder="PAN Number (Optional)"
+                    >
+                </div>
+
+
+                <div class="field full">
+                    <label>Address</label>
+                    <textarea
+                        name="address"
+                        placeholder="Donor का पूरा Address"
+                    ></textarea>
+                </div>
+
+
+                <div class="field">
+                    <label>Donation Amount *</label>
+                    <input
+                        type="number"
+                        name="amount"
+                        min="1"
+                        step="0.01"
+                        placeholder="₹ Amount"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Donation Purpose</label>
+                    <input
+                        type="text"
+                        name="purpose"
+                        placeholder="Donation किस उद्देश्य से है"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Payment Mode</label>
+
+                    <select name="payment_mode">
+
+                        <option value="">
+                            Select Payment Mode
+                        </option>
+
+                        <option value="Cash">
+                            Cash
+                        </option>
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="Bank Transfer">
+                            Bank Transfer
+                        </option>
+
+                        <option value="Cheque">
+                            Cheque
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label>Transaction / Reference Number</label>
+
+                    <input
+                        type="text"
+                        name="transaction_reference"
+                        placeholder="Transaction / Reference Number"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label>Payment Status</label>
+
+                    <select name="payment_status">
+
+                        <option value="Received">
+                            Received
+                        </option>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="Failed">
+                            Failed
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="field full">
+                    <label>Remarks</label>
+
+                    <textarea
+                        name="remarks"
+                        placeholder="Additional remarks"
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button type="submit">
+                    💾 Save Donation
+                </button>
+
+                <a
+                    href="/admin/donations"
+                    class="cancel"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

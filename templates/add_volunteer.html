@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Volunteer - Sambhav Janseva Trust</title>
+</head>
+
+<body>
+
+    <h1>Add Volunteer</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Name:</label><br>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Father / Husband Name:</label><br>
+        <input type="text" name="father_name">
+        <br><br>
+
+        <label>Mobile:</label><br>
+        <input type="text" name="mobile" required>
+        <br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email">
+        <br><br>
+
+        <label>Gender:</label><br>
+        <input type="text" name="gender">
+        <br><br>
+
+        <label>Date of Birth:</label><br>
+        <input type="text" name="dob">
+        <br><br>
+
+        <label>Address:</label><br>
+        <textarea name="address"></textarea>
+        <br><br>
+
+        <label>Area:</label><br>
+        <input type="text" name="area">
+        <br><br>
+
+        <label>Volunteer Type:</label><br>
+        <input type="text" name="volunteer_type" value="General">
+        <br><br>
+
+        <label>Joining Date:</label><br>
+        <input type="text" name="joining_date">
+        <br><br>
+
+        <label>Skills:</label><br>
+        <textarea name="skills"></textarea>
+        <br><br>
+
+        <label>Volunteer Photo:</label><br>
+        <input type="file" name="photo" accept="image/*" required>
+        <br><br>
+
+        <label>Volunteer Signature:</label><br>
+        <input type="file" name="signature" accept="image/*" required>
+        <br><br>
+
+        <button type="submit">Save Volunteer</button>
+
+    </form>
+
+    <br>
+
+    <a href="{{ url_for('volunteers_list') }}">
+        Back to Volunteers
+    </a>
+
+</body>
+</html>

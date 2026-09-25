@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About Trust - Website Content</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #176d99;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5dce2;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #1776a9;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        button,
+        .back-btn {
+            border: none;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button {
+            background: #1776a9;
+            color: white;
+        }
+
+        button:hover {
+            background: #0d5e89;
+        }
+
+        .back-btn {
+            background: #e8f2f7;
+            color: #176d99;
+        }
+
+        .back-btn:hover {
+            background: #d8eaf2;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>
+            🏛️ About Trust
+        </h1>
+
+        <p class="subtitle">
+            Sambhav Janseva Trust के बारे में जानकारी प्रबंधित करें
+        </p>
+
+
+        <form method="POST">
+
+
+            <div class="form-group">
+
+                <label for="heading">
+                    About Heading
+                </label>
+
+                <input
+                    type="text"
+                    id="heading"
+                    name="heading"
+                    placeholder="Enter About heading"
+                    value="{{ content.heading or '' }}"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="description">
+                    About Trust Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Enter information about the trust"
+                >{{ content.description or '' }}</textarea>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button type="submit">
+                    💾 Save About Content
+                </button>
+
+                <a
+                    href="/admin/website-content"
+                    class="back-btn"
+                >
+                    ← Back to Website Content
+                </a>
+
+                <a
+                    href="/admin/dashboard"
+                    class="back-btn"
+                >
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
