@@ -1052,8 +1052,8 @@ def admin_login():
         ).strip()
 
         if (
-            username == "admin"
-            and password == "admin123"
+        username == os.environ["ADMIN_USERNAME"]
+        and password == os.environ["ADMIN_PASSWORD"]
         ):
 
             session["admin_logged_in"] = True
